@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="ICU healthcare analytics case study by Mandira Ghimire using Google BigQuery and SQL."
+    >
+
+    <title>ICU Analytics | Mandira Ghimire</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="project-page">
+
+    <header class="site-header">
+        <div class="container navigation">
+
+            <a
+                href="../index.html"
+                class="logo"
+                aria-label="Return to Mandira Ghimire homepage"
+            >
+                MG
+            </a>
+
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="../index.html">Home</a>
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="../index.html#certifications">Certifications</a>
+                <a href="../index.html#contact">Contact</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+
+        <section class="project-page-header">
+            <div class="container">
+
+                <a
+                    href="../index.html#projects"
+                    class="project-breadcrumb"
+                >
+                    ← Back to featured projects
+                </a>
+
+                <p class="section-label">Healthcare Analytics</p>
+
+                <h1>ICU Analytics </h1>
+                <h2> Using Google BigQuery and Tableau </h2>
+
+                <p class="project-summary">
+                    A healthcare data analysis project exploring ICU
+                    admissions, length of stay, patient characteristics, and
+                    operational patterns using SQL and BigQuery.
+                </p>
+
+                <div class="project-meta-grid">
+
+                    <div class="project-meta-card">
+                        <span>Project type</span>
+                        <strong>Individual analytics project</strong>
+                    </div>
+
+                    <div class="project-meta-card">
+                        <span>Domain</span>
+                        <strong>Healthcare and ICU operations</strong>
+                    </div>
+
+                    <div class="project-meta-card">
+                        <span>Primary tools</span>
+                        <strong>BigQuery, SQL, Python, Tableau</strong>
+                    </div>
+
+                    <div class="project-meta-card">
+                        <span>Deliverables</span>
+                        <strong>Queries, KPIs and Dashboard</strong>
+                    </div>
+
+                </div>
+
+                <div class="project-hero-image">
+                    <img
+                        src="../images/icu-dashboard.png"
+                        alt="ICU analytics dashboard"
+                    >
+                </div>
+
+            </div>
+        </section>
+
+        <section class="project-content">
+            <div class="container case-study-layout">
+
+                <aside class="case-study-sidebar">
+                    <h3>Case study</h3>
+
+                    <nav aria-label="Case study navigation">
+                        <a href="#overview">Overview</a>
+                        <a href="#problem">Problem</a>
+                        <a href="#role">My role</a>
+                        <a href="#data">Data</a>
+                        <a href="#approach">Approach</a>
+                        <a href="#insights">Insights</a>
+                        <a href="#recommendations">Recommendations</a>
+                        <a href="#learning">What I learned</a>
+                    </nav>
+                </aside>
+
+                <div class="case-study-main">
+
+                    <section id="overview" class="case-study-section">
+                        <p class="section-label">01 · Overview</p>
+
+                        <h2>Understanding ICU performance through data</h2>
+
+                        <p>
+                            This project examines intensive-care data to
+                            identify patterns in patient admissions, length of
+                            stay, resource use, and clinical outcomes.
+                        </p>
+
+                        <p>
+                            The goal was to demonstrate how healthcare data can
+                            be transformed into understandable operational
+                            metrics that may support planning and decision-making.
+                        </p>
+                    </section>
+
+                    <section id="problem" class="case-study-section">
+                        <p class="section-label">02 · Business problem</p>
+
+                        <h2>The challenge</h2>
+
+                        <p>
+                            ICU data can be large and complex. Without focused
+                            reporting, it can be difficult to understand which
+                            units experience longer stays, when admission
+                            volumes increase, and where additional operational
+                            review may be needed.
+                        </p>
+
+                        <h3>Questions explored</h3>
+
+                        <ul class="case-study-list">
+                            <li>How do ICU admission volumes change over time?</li>
+                            <li>Which ICU units have longer average stays?</li>
+                            <li>What patient characteristics appear frequently?</li>
+                            <li>Which operational KPIs should be monitored?</li>
+                        </ul>
+                    </section>
+
+                    <section id="role" class="case-study-section">
+                        <p class="section-label">03 · My role</p>
+
+                        <h2>What I contributed</h2>
+
+                        <ul class="case-study-list">
+                            <li>Defined the analytical questions and KPIs.</li>
+                            <li>Queried healthcare tables in Google BigQuery.</li>
+                            <li>Reviewed missing, duplicate and inconsistent values.</li>
+                            <li>Calculated admission and length-of-stay metrics.</li>
+                            <li>Translated results into dashboard-ready findings.</li>
+                            <li>Documented limitations and recommendations.</li>
+                        </ul>
+                    </section>
+
+                    <section id="data" class="case-study-section">
+                        <p class="section-label">04 · Data</p>
+
+                        <h2>Dataset and preparation</h2>
+
+                        <p>
+                            Dataset name: MIMIC-III (Medical Information Mart for Intensive Care III)
+
+                        </p>
+
+                        <h3>Preparation tasks</h3>
+
+                        <ul class="case-study-list">
+                            <li>Selected relevant admission and ICU fields.</li>
+                            <li>Validated date and time values.</li>
+                            <li>Checked for null and duplicate records.</li>
+                            <li>Created calculated length-of-stay measures.</li>
+                            <li>Grouped results by unit and admission period.</li>
+                        </ul>
+                    </section>
+
+                    <section id="approach" class="case-study-section">
+                        <p class="section-label">05 · Approach</p>
+
+                        <h2>Analysis process</h2>
+
+                        <div class="insight-grid">
+
+                            <article class="insight-card">
+                                <strong>1. Define</strong>
+                                <p>
+                                    Selected questions relevant to ICU
+                                    utilization and patient flow.
+                                </p>
+                            </article>
+
+                            <article class="insight-card">
+                                <strong>2. Prepare</strong>
+                                <p>
+                                    Reviewed data quality and selected the
+                                    necessary tables and fields.
+                                </p>
+                            </article>
+
+                            <article class="insight-card">
+                                <strong>3. Analyze</strong>
+                                <p>
+                                    Used SQL aggregations, joins and calculated
+                                    measures.
+                                </p>
+                            </article>
+
+                            <article class="insight-card">
+                                <strong>4. Communicate</strong>
+                                <p>
+                                    Organized KPIs and findings for a
+                                    stakeholder-friendly dashboard.
+                                </p>
+                            </article>
+
+                        </div>
+                    </section>
+
+                    <section id="insights" class="case-study-section">
+                        <p class="section-label">06 · Key insights</p>
+
+                        <h2>What the analysis revealed</h2>
+
+                        <ul class="case-study-list">
+                            <li>Admission volumes differed across ICU units.</li>
+                            <li>Average length of stay varied by unit and patient group.</li>
+                            <li>Some periods showed greater resource demand.</li>
+                            <li>Unit-level monitoring provided more context than one hospital-wide average.</li>
+                        </ul>
+
+                        <div class="project-visual">
+                            <img
+                                src="../images/average-length-of-stay.png"
+                                alt="Dashboard visual showing average length of stay by ICU unit"
+                            >
+
+                            <p class="image-caption">
+                          Average Length of Stay by Care Unit was the most important visual because it revealed substantial variation across ICU units.
+                        Neurology showed the highest average stay at approximately 28.25 days, while several surgical units also exceeded the overall ICU average of 3.63 days. This suggests that length-of-stay monitoring should be performed by care unit rather than relying only on a hospital-wide average.  
+                        </p>
+                            
+                        </div>
+                    </section>
+
+                    <section id="recommendations" class="case-study-section">
+                        <p class="section-label">07 · Recommendations</p>
+
+                        <h2>Actions supported by the findings</h2>
+
+                        <ul class="case-study-list">
+                            <li>Monitor length of stay separately by ICU unit.</li>
+                            <li>Review high-volume admission periods during staffing discussions.</li>
+                            <li>Track consistent KPI definitions across reports.</li>
+                            <li>Investigate unusually long stays before drawing conclusions.</li>
+                        </ul>
+                    </section>
+
+                    <section id="learning" class="case-study-section">
+                        <p class="section-label">08 · Reflection</p>
+
+                        <h2>What I learned</h2>
+
+                        <p>
+                            This project strengthened my ability to query
+                            healthcare data in BigQuery, create operational
+                            metrics, recognize data-quality limitations, and
+                            communicate results without overstating clinical
+                            conclusions.
+                        </p>
+                    </section>
+
+                    <section class="project-action-box">
+                        <h2>Explore the supporting work</h2>
+
+                        <div class="project-action-buttons">
+                        
+                            <a href="https://public.tableau.com/app/profile/mandirag/viz/ICULengthofStayResourceUtilizationDashboard/ICU" class="button button-secondary">
+                                View dashboard
+                            </a>
+
+                            <a href="#" class="button button-secondary">
+                                Download presentation
+                            </a>
+                        </div>
+                    </section>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>© <span id="current-year"></span> Mandira Ghimire</p>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="../index.html#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+
+</body>
+</html>

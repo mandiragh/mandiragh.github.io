@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Hospital wait-time improvement business analysis case study by Mandira Ghimire, including requirements, BPMN, RTM, stakeholder analysis, risks, and proposed healthcare workflow improvements."
+    >
+
+    <title>Hospital Wait-Time Improvement | Mandira Ghimire</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="project-page">
+
+    <header class="site-header">
+        <div class="container navigation">
+
+            <a
+                href="../index.html"
+                class="logo"
+                aria-label="Return to Mandira Ghimire homepage"
+            >
+                MG
+            </a>
+
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="../index.html">Home</a>
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="../index.html#certifications">Certifications</a>
+                <a href="../index.html#contact">Contact</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+
+        <section class="project-page-header">
+            <div class="container">
+
+                <a
+                    href="../index.html#projects"
+                    class="project-breadcrumb"
+                >
+                    ← Back to featured projects
+                </a>
+
+                <p class="section-label">Business Analysis · Healthcare Operations</p>
+
+                <h1>Hospital Wait-Time Improvement</h1>
+
+                <p class="project-summary">
+                    A healthcare business analysis case study proposing an
+                    automated scheduling, resource-tracking, and notification
+                    workflow designed to improve operational visibility and
+                    support a target reduction in patient wait times.
+                </p>
+
+                <div class="project-meta-grid">
+
+                    <div class="project-meta-card">
+                        <span>Project type</span>
+                        <strong>Business analysis capstone</strong>
+                    </div>
+
+                    <div class="project-meta-card">
+                        <span>Domain</span>
+                        <strong>Healthcare operations</strong>
+                    </div>
+
+                    <div class="project-meta-card">
+                        <span>Methods</span>
+                        <strong>BRD, BPMN, RTM, user stories and UAT</strong>
+                    </div>
+
+                    <div class="project-meta-card">
+                        <span>Deliverables</span>
+                        <strong>Requirements, process models and dashboard plan</strong>
+                    </div>
+
+                </div>
+
+                <div class="project-hero-image">
+                    <img
+                        src="../images/hospital-wait-time-overview.png"
+                        alt="Hospital wait-time improvement project overview"
+                    >
+                </div>
+
+            </div>
+        </section>
+
+        <section class="project-content">
+            <div class="container case-study-layout">
+
+                <aside class="case-study-sidebar">
+                    <h3>Case study</h3>
+
+                    <nav aria-label="Case study navigation">
+                        <a href="#overview">Overview</a>
+                        <a href="#problem">Business problem</a>
+                        <a href="#objective">Objective and scope</a>
+                        <a href="#role">My role</a>
+                        <a href="#stakeholders">Stakeholders</a>
+                        <a href="#requirements">Requirements</a>
+                        <a href="#approach">Approach</a>
+                        <a href="#solution">Proposed solution</a>
+                        <a href="#deliverables">Deliverables</a>
+                        <a href="#risks">Risks and constraints</a>
+                        <a href="#impact">Expected impact</a>
+                        <a href="#learning">What I learned</a>
+                    </nav>
+                </aside>
+
+                <div class="case-study-main">
+
+                    <section id="overview" class="case-study-section">
+                        <p class="section-label">01 · Overview</p>
+
+                        <h2>Improving the patient scheduling experience</h2>
+
+                        <p>
+                            This case study examines how fragmented scheduling,
+                            limited resource visibility, and delayed communication
+                            can contribute to longer patient wait times in a
+                            hospital environment.
+                        </p>
+
+                        <p>
+                            The project translates the operational challenge into
+                            documented business requirements, process models,
+                            traceable solution features, risks, and a proposed
+                            reporting framework.
+                        </p>
+                    </section>
+
+                    <section id="problem" class="case-study-section">
+                        <p class="section-label">02 · Business problem</p>
+
+                        <h2>The challenge</h2>
+
+                        <p>
+                            Patients may experience delays when appointment
+                            scheduling, provider availability, room status, and
+                            operational updates are managed through disconnected
+                            or manual processes.
+                        </p>
+
+                        <p>
+                            Hospital staff also need a reliable way to understand
+                            current appointment demand, resource availability,
+                            scheduling conflicts, and wait-time performance.
+                        </p>
+
+                        <h3>Questions explored</h3>
+
+                        <ul class="case-study-list">
+                            <li>Where do delays occur in the current scheduling process?</li>
+                            <li>Which stakeholders need real-time appointment and resource information?</li>
+                            <li>What requirements are necessary for automated scheduling and notifications?</li>
+                            <li>Which KPIs should be monitored to evaluate wait-time performance?</li>
+                            <li>How can requirements be traced through design, testing, and delivery?</li>
+                        </ul>
+                    </section>
+
+                    <section id="objective" class="case-study-section">
+                        <p class="section-label">03 · Objective and scope</p>
+
+                        <h2>Project objective</h2>
+
+                        <p>
+                            The project proposed a digital workflow targeting a
+                            <strong>20% reduction in patient wait time</strong>
+                            through automated scheduling, resource tracking, and
+                            timely notifications.
+                        </p>
+
+                        <p>
+                            Note: This was a proposed target for the case study. The
+                            solution was not implemented in a live hospital, so
+                            the project does not describe target as an
+                            achieved result.
+                        </p>
+
+                        <h3>In scope</h3>
+
+                        <ul class="case-study-list">
+                            <li>Appointment scheduling and rescheduling</li>
+                            <li>Provider, room, and resource availability tracking</li>
+                            <li>Patient and staff notifications</li>
+                            <li>Wait-time and scheduling KPI reporting</li>
+                            <li>Requirements, process, risk, and testing documentation</li>
+                        </ul>
+
+                        <h3>Out of scope</h3>
+
+                        <ul class="case-study-list">
+                            <li>Hospital construction or physical expansion</li>
+                            <li>Recruitment of additional clinical staff</li>
+                            <li>Replacement of the full electronic health record</li>
+                            <li>Clinical diagnosis or treatment decisions</li>
+                        </ul>
+                    </section>
+
+                    <section id="role" class="case-study-section">
+                        <p class="section-label">04 · My role</p>
+
+                        <h2>What I contributed</h2>
+
+                        <ul class="case-study-list">
+                            <li>Defined the business problem, objective, scope, and success measures.</li>
+                            <li>Identified primary and secondary stakeholders.</li>
+                            <li>Documented business, functional, and non-functional requirements.</li>
+                            <li>Created current-state and future-state process workflows.</li>
+                            <li>Prepared user stories and acceptance criteria.</li>
+                            <li>Developed a Requirements Traceability Matrix.</li>
+                            <li>Prepared a stakeholder matrix, risk register, SWOT, and WBS.</li>
+                            <li>Proposed wait-time, scheduling, feedback, and resource KPIs.</li>
+                            <li>Organized findings into a stakeholder-focused presentation.</li>
+                        </ul>
+                    </section>
+
+                    <section id="stakeholders" class="case-study-section">
+                        <p class="section-label">05 · Stakeholders</p>
+
+                        <h2>Who the solution supports</h2>
+
+                        <div class="insight-grid">
+
+                            <article class="insight-card">
+                                <strong>Patients</strong>
+                                <p>
+                                    Need simple scheduling, timely updates, and
+                                    clearer expectations about delays.
+                                </p>
+                            </article>
+
+                            <article class="insight-card">
+                                <strong>Doctors and nurses</strong>
+                                <p>
+                                    Need visibility into schedules, patient flow,
+                                    rooms, and available resources.
+                                </p>
+                            </article>
+
+                            <article class="insight-card">
+                                <strong>Hospital administrators</strong>
+                                <p>
+                                    Need KPIs for wait times, utilization,
+                                    cancellations, and operational bottlenecks.
+                                </p>
+                            </article>
+
+                            <article class="insight-card">
+                                <strong>IT and support teams</strong>
+                                <p>
+                                    Need secure integration, system reliability,
+                                    access controls, and support procedures.
+                                </p>
+                            </article>
+
+                        </div>
+                    </section>
+
+                    <section id="requirements" class="case-study-section">
+                        <p class="section-label">06 · Requirements</p>
+
+                        <h2>Key solution requirements</h2>
+
+                        <h3>Business requirements</h3>
+
+                        <ul class="case-study-list">
+                            <li>Improve the visibility of appointment and resource status.</li>
+                            <li>Reduce avoidable scheduling conflicts and manual coordination.</li>
+                            <li>Provide timely communication to patients and hospital staff.</li>
+                            <li>Measure patient wait time and scheduling performance consistently.</li>
+                        </ul>
+
+                        <h3>Functional requirements</h3>
+
+                        <ul class="case-study-list">
+                            <li>Allow authorized users to create, update, cancel, and reschedule appointments.</li>
+                            <li>Display provider, room, and resource availability.</li>
+                            <li>Detect scheduling conflicts before confirmation.</li>
+                            <li>Send confirmations, reminders, delay notices, and rescheduling updates.</li>
+                            <li>Capture appointment, feedback, and resource-status data for reporting.</li>
+                        </ul>
+
+                        <h3>Non-functional requirements</h3>
+
+                        <ul class="case-study-list">
+                            <li>Protect patient information through role-based access and secure handling.</li>
+                            <li>Provide a clear and accessible user experience.</li>
+                            <li>Support reliable system performance during high-demand periods.</li>
+                            <li>Maintain auditability for schedule and status changes.</li>
+                        </ul>
+                    </section>
+
+                    <section id="approach" class="case-study-section">
+                        <p class="section-label">07 · Approach</p>
+
+                        <h2>Business analysis process</h2>
+
+                        <div class="insight-grid">
+
+                            <article class="insight-card">
+                                <strong>1. Discover</strong>
+                                <p>
+                                    Defined the problem, stakeholders, pain
+                                    points, assumptions, and project boundaries.
+                                </p>
+                            </article>
+
+                            <article class="insight-card">
+                                <strong>2. Analyze</strong>
+                                <p>
+                                    Reviewed the current process and identified
+                                    scheduling, visibility, and communication gaps.
+                                </p>
+                            </article>
+
+                            <article class="insight-card">
+                                <strong>3. Specify</strong>
+                                <p>
+                                    Documented requirements, user stories,
+                                    acceptance criteria, and traceability.
+                                </p>
+                            </article>
+
+                            <article class="insight-card">
+                                <strong>4. Design</strong>
+                                <p>
+                                    Created a future-state workflow and proposed
+                                    scheduling, resource, and notification features.
+                                </p>
+                            </article>
+
+                            <article class="insight-card">
+                                <strong>5. Validate</strong>
+                                <p>
+                                    Defined UAT scenarios and success criteria
+                                    linked to business and functional requirements.
+                                </p>
+                            </article>
+
+                            <article class="insight-card">
+                                <strong>6. Communicate</strong>
+                                <p>
+                                    Presented the proposed solution, risks,
+                                    KPIs, and recommendations to stakeholders.
+                                </p>
+                            </article>
+
+                        </div>
+                    </section>
+
+                    <section id="solution" class="case-study-section">
+                        <p class="section-label">08 · Proposed solution</p>
+
+                        <h2>Automated scheduling and resource visibility</h2>
+
+                        <p>
+                            The proposed future-state solution combines
+                            appointment scheduling, resource availability,
+                            conflict detection, and status notifications in one
+                            coordinated workflow.
+                        </p>
+
+                        <ul class="case-study-list">
+                            <li>Patients request or confirm available appointment times.</li>
+                            <li>The system verifies provider, room, and resource availability.</li>
+                            <li>Scheduling conflicts are flagged before an appointment is finalized.</li>
+                            <li>Patients and staff receive confirmations, reminders, and delay notifications.</li>
+                            <li>Operational data feeds a dashboard for wait-time and resource monitoring.</li>
+                        </ul>
+
+                        <div class="project-visual">
+                            <img
+                                src="../images/hospital-future-state-bpmn.png"
+                                alt="Future-state BPMN workflow for hospital appointment scheduling"
+                            >
+
+                            <p class="image-caption">
+                                Future-state process showing how appointment
+                                requests, availability checks, confirmations,
+                                notifications, and operational reporting connect.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section id="deliverables" class="case-study-section">
+                        <p class="section-label">09 · Deliverables</p>
+
+                        <h2>Documentation produced</h2>
+
+                        <ul class="case-study-list">
+                            <li>Business Requirements Document</li>
+                            <li>Current-state and future-state process maps</li>
+                            <li>BPMN workflow</li>
+                            <li>Stakeholder matrix and communication strategy</li>
+                            <li>Business, functional, and non-functional requirements</li>
+                            <li>User stories and acceptance criteria</li>
+                            <li>Seven-column Requirements Traceability Matrix</li>
+                            <li>Risk register</li>
+                            <li>SWOT analysis</li>
+                            <li>Work Breakdown Structure</li>
+                            <li>UAT scenarios</li>
+                            <li>Dashboard and KPI plan</li>
+                        </ul>
+                    </section>
+
+                    <section id="risks" class="case-study-section">
+                        <p class="section-label">10 · Risks and constraints</p>
+
+                        <h2>Key implementation considerations</h2>
+
+                        <ul class="case-study-list">
+                            <li>Patient privacy and HIPAA-related data handling requirements</li>
+                            <li>Integration with existing scheduling and hospital systems</li>
+                            <li>Resistance to workflow changes among users</li>
+                            <li>Incomplete or inconsistent resource-status data</li>
+                            <li>Budget and implementation timeline constraints</li>
+                            <li>Notification failures or outdated contact information</li>
+                            <li>Need for staff training, support, and process ownership</li>
+                        </ul>
+                    </section>
+
+                    <section id="impact" class="case-study-section">
+                        <p class="section-label">11 · Expected impact</p>
+
+                        <h2>How success would be measured</h2>
+
+                        <p>
+                            Because this was a proposed solution, the project
+                            defined expected benefits and KPIs rather than
+                            claiming measured implementation results.
+                        </p>
+
+                        <ul class="case-study-list">
+                            <li>Average patient wait time</li>
+                            <li>Percentage of appointments starting on time</li>
+                            <li>Cancellation and no-show rate</li>
+                            <li>Scheduling-conflict rate</li>
+                            <li>Provider and room utilization</li>
+                            <li>Notification delivery rate</li>
+                            <li>Patient satisfaction and feedback trends</li>
+                        </ul>
+
+                        <p>
+                            The expected operational benefits include improved
+                            scheduling visibility, fewer avoidable conflicts,
+                            faster communication, and stronger decision support
+                            for hospital administrators.
+                        </p>
+                    </section>
+
+                    <section id="learning" class="case-study-section">
+                        <p class="section-label">12 · Reflection</p>
+
+                        <h2>What I learned</h2>
+
+                        <p>
+                            This project strengthened my ability to convert an
+                            operational healthcare problem into structured,
+                            testable, and traceable requirements.
+                        </p>
+
+                        <p>
+                            It also improved my understanding of stakeholder
+                            communication, process modeling, scope control,
+                            healthcare privacy considerations, risk analysis,
+                            UAT planning, and the importance of distinguishing
+                            proposed outcomes from measured results.
+                        </p>
+                    </section>
+
+                    <section class="project-action-box">
+                        <h2>Explore the supporting work</h2>
+
+                        <p>
+                            Add links to your presentation, BRD, BPMN diagram,
+                            RTM, dashboard, or GitHub repository after those
+                            materials are uploaded.
+                        </p>
+
+                        <div class="project-action-buttons">
+
+                            <a
+                                href="#"
+                                class="button button-secondary"
+                            >
+                                View presentation
+                            </a>
+
+                            <a
+                                href="#"
+                                class="button button-secondary"
+                            >
+                                View BRD
+                            </a>
+
+                            <a
+                                href="#"
+                                class="button button-secondary"
+                            >
+                                View BPMN
+                            </a>
+
+                            <a
+                                href="#"
+                                class="button button-secondary"
+                            >
+                                View RTM
+                            </a>
+
+                        </div>
+                    </section>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+
+            <p>
+                © <span id="current-year"></span> Mandira Ghimire
+            </p>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="../index.html#contact">Contact</a>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+
+</body>
+</html>

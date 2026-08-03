@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Medicare hospital spending analysis case study by Mandira Ghimire."
+    >
+
+    <title>Medicare Hospital Spending Analysis | Mandira Ghimire</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="project-page">
+
+    <header class="site-header">
+        <div class="container navigation">
+
+            <a
+                href="../index.html"
+                class="logo"
+                aria-label="Return to Mandira Ghimire homepage"
+            >
+                MG
+            </a>
+
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="../index.html">Home</a>
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="../index.html#certifications">Certifications</a>
+                <a href="../index.html#contact">Contact</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+
+        <section class="project-page-header">
+            <div class="container">
+
+                <a
+                    href="../index.html#projects"
+                    class="project-breadcrumb"
+                >
+                    ← Back to featured projects
+                </a>
+
+                <p class="section-label">
+                    Healthcare Cost Analytics
+                </p>
+
+                <h1>Medicare Hospital Spending Analysis</h1>
+
+                <p class="project-summary">
+                    A healthcare analytics project examining Medicare
+                    spending across hospitals, claim types, care periods,
+                    states, and national benchmarks to identify spending
+                    patterns and potential areas for operational review.
+                </p>
+
+                <div class="project-meta-grid">
+
+                    <div class="project-meta-card">
+                        <span>Project type</span>
+                        <strong>Individual analytics project</strong>
+                    </div>
+
+                    <div class="project-meta-card">
+                        <span>Domain</span>
+                        <strong>Medicare and healthcare finance</strong>
+                    </div>
+
+                    <div class="project-meta-card">
+                        <span>Primary tools</span>
+                        <strong>Excel(Pivot Tables, Vlookup, Xlookup,Power Pivot) & Visualization</strong>
+                    </div>
+
+                    <div class="project-meta-card">
+                        <span>Deliverables</span>
+                        <strong>Dataset, analysis and dashboard</strong>
+                    </div>
+
+                </div>
+
+                <div class="project-hero-image">
+                    <img
+                        src="../images/medicare-spending-dashboard.png"
+                        alt="Medicare hospital spending analysis dashboard"
+                    >
+                </div>
+
+            </div>
+        </section>
+
+        <section class="project-content">
+            <div class="container case-study-layout">
+
+                <aside class="case-study-sidebar">
+                    <h3>Case study</h3>
+
+                    <nav aria-label="Case study navigation">
+                        <a href="#overview">Overview</a>
+                        <a href="#problem">Problem</a>
+                        <a href="#role">My role</a>
+                        <a href="#data">Dataset</a>
+                        <a href="#questions">Questions</a>
+                        <a href="#approach">Approach</a>
+                        <a href="#insights">Insights</a>
+                        <a href="#recommendations">Recommendations</a>
+                        <a href="#limitations">Limitations</a>
+                        <a href="#learning">What I learned</a>
+                    </nav>
+                </aside>
+
+                <div class="case-study-main">
+
+                    <section
+                        id="overview"
+                        class="case-study-section"
+                    >
+                        <p class="section-label">01 · Overview</p>
+
+                        <h2>
+                            Examining Medicare spending across hospital episodes
+                        </h2>
+
+                        <p>
+                            This project explores Medicare hospital spending
+                            data organized by hospital, claim type, care period,
+                            state averages, and national averages.
+                        </p>
+
+                        <p>
+                            The purpose is to identify variation in spending,
+                            compare hospital-level performance with broader
+                            benchmarks, and highlight patterns that may warrant
+                            additional financial or operational investigation.
+                        </p>
+                    </section>
+
+                    <section
+                        id="problem"
+                        class="case-study-section"
+                    >
+                        <p class="section-label">
+                            02 · Business problem
+                        </p>
+
+                        <h2>The challenge</h2>
+
+                        <p>
+                            Healthcare spending varies across hospitals,
+                            geographic areas, claim categories, and stages of
+                            care. Without structured analysis, it can be
+                            difficult to determine where spending differs from
+                            state or national benchmarks and which claim types
+                            contribute most heavily to an episode of care.
+                        </p>
+
+                        <p>
+                            The project focuses on making those differences
+                            easier to interpret through data preparation,
+                            comparison, and visualization.
+                        </p>
+                    </section>
+
+                    <section
+                        id="role"
+                        class="case-study-section"
+                    >
+                        <p class="section-label">03 · My role</p>
+
+                        <h2>What I completed</h2>
+
+                        <ul class="case-study-list">
+                            <li>
+                                Reviewed and prepared hospital spending data.
+                            </li>
+
+                            <li>
+                                Examined claim types and care-period categories.
+                            </li>
+
+                            <li>
+                                Compared hospital spending with state and
+                                national averages.
+                            </li>
+
+                            <li>
+                                Identified variation and potential spending
+                                drivers.
+                            </li>
+
+                            <li>
+                                Created summary metrics and visualizations.
+                            </li>
+
+                            <li>
+                                Published the prepared dataset on Kaggle.
+                            </li>
+
+                            <li>
+                                Documented analytical limitations and possible
+                                next steps.
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section
+                        id="data"
+                        class="case-study-section"
+                    >
+                        <p class="section-label">04 · Dataset</p>
+
+                        <h2>Medicare hospital spending data</h2>
+
+                        <p>
+                            The dataset contains hospital-level Medicare
+                            spending information by claim type and care period,
+                            along with hospital, state, and national spending
+                            comparisons.
+                        </p>
+
+                        <h3>Important fields</h3>
+
+                        <ul class="case-study-list">
+                            <li>Hospital name and provider identification</li>
+                            <li>State or geographic location</li>
+                            <li>Claim type</li>
+                            <li>Episode or care-period category</li>
+                            <li>Hospital average spending</li>
+                            <li>State average spending</li>
+                            <li>National average spending</li>
+                            <li>Percentage of total episode spending</li>
+                        </ul>
+                    </section>
+
+                    <section
+                        id="questions"
+                        class="case-study-section"
+                    >
+                        <p class="section-label">
+                            05 · Analytical questions
+                        </p>
+
+                        <h2>Questions explored</h2>
+
+                        <ul class="case-study-list">
+                            <li>
+                                Which claim types account for the largest share
+                                of hospital episode spending?
+                            </li>
+
+                            <li>
+                                How does hospital spending compare with state
+                                and national averages?
+                            </li>
+
+                            <li>
+                                Which hospitals show the greatest difference
+                                from available benchmarks?
+                            </li>
+
+                            <li>
+                                How does spending change across care periods?
+                            </li>
+
+                            <li>
+                                Are there states or claim categories with
+                                consistently higher spending?
+                            </li>
+
+                            <li>
+                                Which patterns should receive further review
+                                rather than immediate conclusions?
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section
+                        id="approach"
+                        class="case-study-section"
+                    >
+                        <p class="section-label">06 · Approach</p>
+
+                        <h2>Analysis process</h2>
+
+                        <div class="insight-grid">
+
+                            <article class="insight-card">
+                                <strong>1. Understand</strong>
+
+                                <p>
+                                    Reviewed the dataset structure, definitions,
+                                    claim types, and episode periods.
+                                </p>
+                            </article>
+
+                            <article class="insight-card">
+                                <strong>2. Prepare</strong>
+
+                                <p>
+                                    Standardized fields, reviewed missing values,
+                                    and prepared numerical spending measures.
+                                </p>
+                            </article>
+
+                            <article class="insight-card">
+                                <strong>3. Compare</strong>
+
+                                <p>
+                                    Compared hospital values with corresponding
+                                    state and national averages.
+                                </p>
+                            </article>
+
+                            <article class="insight-card">
+                                <strong>4. Analyze</strong>
+
+                                <p>
+                                    Grouped spending by hospital, claim type,
+                                    period, and geographic area.
+                                </p>
+                            </article>
+
+                            <article class="insight-card">
+                                <strong>5. Visualize</strong>
+
+                                <p>
+                                    Created charts and KPI summaries to make
+                                    spending differences easier to interpret.
+                                </p>
+                            </article>
+
+                            <article class="insight-card">
+                                <strong>6. Communicate</strong>
+
+                                <p>
+                                    Converted findings into cautious,
+                                    business-focused observations and
+                                    recommendations.
+                                </p>
+                            </article>
+
+                        </div>
+                    </section>
+
+                    <section
+                        id="insights"
+                        class="case-study-section"
+                    >
+                        <p class="section-label">07 · Key Findings</p>
+
+                        <h2>Findings from the analysis</h2>
+
+                
+
+                        <ul class="case-study-list">
+
+    <li>
+        Only <strong>14%</strong> of hospitals were identified as performing
+        above the benchmark, indicating that the majority of hospitals were
+        either on target or below the national spending benchmark.
+    </li>
+
+    <li>
+        The <strong>national average episode-of-care cost was $27,477</strong>,
+        providing a consistent benchmark for comparing hospital and regional
+        spending performance.
+    </li>
+
+    <li>
+        Hospitals in the <strong>West region</strong> showed the highest average
+        episode-of-care spending among the four regions, while the
+        <strong>Midwest</strong> had the lowest average spending in the comparison.
+    </li>
+
+    <li>
+        <strong>Skilled Nursing Facility</strong> and <strong>Inpatient</strong>
+        services represented the largest components of post-discharge spending,
+        whereas categories such as Durable Medical Equipment and Home Health
+        Agency contributed a much smaller share of total costs.
+    </li>
+
+    <li>
+        Performance varied considerably across states, with hospitals distributed
+        across <strong>Above Benchmark</strong>, <strong>On Target</strong>, and
+        <strong>Below Benchmark</strong> categories, demonstrating the importance
+        of evaluating healthcare spending at both regional and state levels
+        rather than relying solely on national averages.
+    </li>
+
+    <li>
+    Analysis of the top-spending hospitals showed noticeable variation in
+    average episode-of-care costs, suggesting that hospital-level comparisons
+    can help identify organizations for further financial and operational
+    review while accounting for differences in patient populations and services
+    provided.
+</li>
+
+</ul>
+                        <div class="project-visual">
+                            <img
+                                src="../images/medicare-spending-dashboard.png"
+                                alt="Medicare spending dashboard and analysis"
+                            >
+
+                            <p class="image-caption">
+                             Hospital - State, and National spending comparisons.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section
+                        id="recommendations"
+                        class="case-study-section"
+                    >
+                        <p class="section-label">
+                            08 · Recommendations
+                        </p>
+
+                        <h2>Potential actions supported by the analysis</h2>
+
+                        <ul class="case-study-list">
+                            <li>
+                                Review claim categories that consistently exceed
+                                state or national comparisons.
+                            </li>
+
+                            <li>
+                                Monitor spending separately across the stages of
+                                an episode instead of relying only on one total.
+                            </li>
+
+                            <li>
+                                Investigate outlier hospitals while accounting
+                                for patient complexity and service mix.
+                            </li>
+
+                            <li>
+                                Combine spending measures with quality and
+                                outcome data before assessing efficiency.
+                            </li>
+
+                            <li>
+                                Use consistent benchmark definitions across
+                                reporting periods.
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section
+                        id="limitations"
+                        class="case-study-section"
+                    >
+                        <p class="section-label">09 · Limitations</p>
+
+                        <h2>What this analysis cannot establish</h2>
+
+                        <ul class="case-study-list">
+                            <li>
+                                Higher spending does not automatically indicate
+                                inefficiency or poor performance.
+                            </li>
+
+                            <li>
+                                The dataset may not fully account for patient
+                                complexity, case mix, or local operating costs.
+                            </li>
+
+                            <li>
+                                Hospital-level averages do not represent
+                                individual patient experiences.
+                            </li>
+
+                            <li>
+                                Spending comparisons should be evaluated with
+                                quality, outcomes, and utilization measures.
+                            </li>
+
+                            <li>
+                                The analysis identifies associations and
+                                patterns, not causal relationships.
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section
+                        id="learning"
+                        class="case-study-section"
+                    >
+                        <p class="section-label">10 · Reflection</p>
+
+                        <h2>What I learned</h2>
+
+                        <p>
+                            This project strengthened my ability to work with
+                            healthcare financial data, compare organizations
+                            against benchmarks, analyze claim-level categories,
+                            and communicate spending patterns without assuming
+                            that higher cost alone represents poor performance.
+                        </p>
+
+                        <p>
+                            Publishing the dataset on Kaggle also helped me
+                            practice data documentation, public presentation,
+                            metadata preparation, and making analytical
+                            resources easier for others to understand.
+                        </p>
+                    </section>
+
+                    <section class="project-action-box">
+                        <h2>Explore the project</h2>
+
+                    
+
+                        <div class="project-action-buttons">
+
+                            <a
+                                href="https://www.kaggle.com/datasets/mandiraghimire/medicare-hospital-spending-by-claim"
+                                class="button button-secondary"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                View Kaggle dataset
+                            </a>
+
+                        
+
+                            <a
+                                href="https://www.kaggle.com/datasets/mandiraghimire/medicare-hospital-spending-by-claim?select=Dashboard.png"
+                                class="button button-secondary"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                View dashboard
+                            </a>
+
+                            <a
+                                href="#"
+                                class="button button-secondary"
+                            >
+                                Download presentation
+                            </a>
+
+                        </div>
+                    </section>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+
+            <p>
+                © <span id="current-year"></span> Mandira Ghimire
+            </p>
+
+            <div class="footer-links">
+                <a href="../index.html">Home</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="../index.html#contact">Contact</a>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+
+</body>
+</html>
+
