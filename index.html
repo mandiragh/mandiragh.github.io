@@ -1,1236 +1,1686 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mandira Ghimire — Data Analytics, Business Intelligence, Healthcare Analytics, and Business Analysis Portfolio">
+  <title>Mandira Ghimire | Data Analytics Portfolio</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+  <style>
+    /* ==========================================
+       ORIGINAL PORTFOLIO COLOR PALETTE
+    ========================================== */
+    :root {
+      --navy: #162a4d;
+      --navy-dark: #0d1b33;
+      --navy-soft: #27476f;
+      --blue: #5f8fc9;
+      --light-blue: #dbeafa;
+      --pale-blue: #eef6ff;
+      --lavender-blue: #eef0ff;
+      --maroon: #9c5264;
+      --soft-pink: #f3dce3;
+      --pale-pink: #fff2f6;
+      --background: #f9fbff;
+      --surface: #ffffff;
+      --text: #17233a;
+      --muted: #66738a;
+      --border: #dce4f0;
+      --shadow: 0 20px 60px rgba(30, 54, 92, 0.12);
+      --container-width: 1140px;
+    }
 
-    <meta
-        name="description"
-        content="Portfolio of Mandira Ghimire, a data analyst and business analyst specializing in healthcare analytics, business intelligence, and data storytelling."
-    >
+    * {
+      box-sizing: border-box;
+    }
 
-    <title>Mandira Ghimire | Data Analytics Portfolio</title>
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
 
-    <link rel="stylesheet" href="style.css">
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    h1, h2, h3, h4, p {
+      margin-top: 0;
+    }
+
+    h1, h2, h3, h4 {
+      line-height: 1.25;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--container-width));
+      margin: 0 auto;
+    }
+
+    /* NAVIGATION */
+
+    .site-header {
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+    }
+
+    .navigation {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .logo {
+      background: var(--navy);
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 19px;
+    }
+
+    .nav-links a {
+      color: var(--navy-soft);
+      font-size: 0.82rem;
+      font-weight: 650;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--maroon);
+    }
+
+    /* BUTTONS */
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 44px;
+      padding: 11px 21px;
+      border-radius: 10px;
+      font-size: 0.86rem;
+      font-weight: 750;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(22,42,77,0.13);
+    }
+
+    .button-primary {
+      background: var(--navy);
+      color: white;
+    }
+
+    .button-secondary {
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--navy);
+    }
+
+    .button-light {
+      background: white;
+      color: var(--navy);
+    }
+
+    .button-outline-light {
+      border: 1px solid rgba(255,255,255,0.65);
+      color: white;
+    }
+
+    /* HERO BANNER */
+
+    .portfolio-hero {
+      padding: 30px 0 0;
+    }
+
+    .portfolio-banner {
+      min-height: 350px;
+      padding: 58px 60px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 92% 16%, rgba(243,220,227,0.22), transparent 30%),
+        linear-gradient(120deg, var(--navy-dark), var(--navy) 52%, var(--navy-soft));
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .banner-content {
+      max-width: 730px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .banner-eyebrow {
+      color: #f3bdcb;
+      margin-bottom: 19px;
+    }
+
+    .portfolio-banner h1 {
+      font-size: clamp(2.3rem, 4.5vw, 4.1rem);
+      color: white;
+      letter-spacing: -0.045em;
+      line-height: 1.12;
+      margin-bottom: 22px;
+    }
+
+    .portfolio-banner h1 span {
+      color: #f3bdcb;
+    }
+
+    .banner-description {
+      color: var(--light-blue);
+      max-width: 590px;
+      font-size: 1rem;
+      margin-bottom: 27px;
+    }
+
+    .banner-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .banner-circle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .circle-one {
+      width: 310px;
+      height: 310px;
+      right: -65px;
+      top: -115px;
+      background: rgba(219,234,250,0.09);
+    }
+
+    .circle-two {
+      width: 230px;
+      height: 230px;
+      right: 100px;
+      bottom: -130px;
+      background: rgba(243,220,227,0.1);
+    }
+
+    .circle-three {
+      width: 100px;
+      height: 100px;
+      right: 95px;
+      top: 120px;
+      border: 2px solid rgba(255,255,255,0.13);
+    }
+
+    /* DASHBOARD LAYOUT */
+
+    .dashboard {
+      padding: 28px 0 60px;
+    }
+
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 292px minmax(0, 1fr);
+      gap: 26px;
+      align-items: start;
+    }
+
+    .sidebar,
+    .main-column {
+      display: grid;
+      gap: 23px;
+      min-width: 0;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 8px 28px rgba(22,42,77,0.055);
+      overflow: hidden;
+    }
+
+    .card-body {
+      padding: 30px;
+    }
+
+    .section-label {
+      color: var(--maroon);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 9px;
+    }
+
+    .section-title {
+      font-size: clamp(1.45rem, 2.8vw, 2rem);
+      color: var(--navy);
+      letter-spacing: -0.03em;
+      margin-bottom: 17px;
+    }
+
+    .body-text {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .body-text + .body-text {
+      margin-top: 12px;
+    }
+
+    /* PROFILE SIDEBAR */
+
+    .profile-cover {
+      height: 100px;
+      background: linear-gradient(125deg, var(--blue), var(--light-blue) 65%, var(--soft-pink));
+    }
+
+    .profile-content {
+      padding: 0 23px 26px;
+      text-align: center;
+    }
+
+    .profile-avatar {
+      width: 122px;
+      height: 122px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid white;
+      margin: -61px auto 16px;
+      background: var(--pale-blue);
+      position: relative;
+      box-shadow: 0 5px 18px rgba(22,42,77,0.1);
+    }
+
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .profile-content h2 {
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .profile-headline {
+      color: var(--navy-soft);
+      font-size: 0.87rem;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 9px;
+    }
+
+    .profile-location {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 23px 0;
+    }
+
+    .profile-detail {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .profile-detail small {
+      display: block;
+      color: var(--maroon);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .profile-detail strong {
+      display: block;
+      color: var(--navy);
+      font-size: 0.91rem;
+    }
+
+    .profile-detail p {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 0;
+    }
+
+    .profile-content .button {
+      width: 100%;
+    }
+
+    .contact-text-link {
+      display: inline-block;
+      margin-top: 15px;
+      color: var(--maroon);
+      font-weight: 750;
+      font-size: 0.88rem;
+    }
+
+    /* SIDEBAR WIDGETS */
+
+    .widget {
+      padding: 24px;
+    }
+
+    .widget h3 {
+      font-size: 1.06rem;
+      color: var(--navy);
+      margin-bottom: 15px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--pale-blue);
+      border: 1px solid var(--light-blue);
+      color: var(--navy-soft);
+      border-radius: 30px;
+      padding: 6px 11px;
+      font-size: 0.74rem;
+      font-weight: 650;
+    }
+
+    .tag.pink {
+      background: var(--pale-pink);
+      border-color: var(--soft-pink);
+      color: var(--maroon);
+    }
+
+    .text-link {
+      color: var(--maroon);
+      font-size: 0.85rem;
+      font-weight: 750;
+      display: inline-block;
+      margin-top: 16px;
+    }
+
+    .text-link:hover {
+      text-decoration: underline;
+    }
+
+    .highlight-widget {
+      background: linear-gradient(140deg, var(--pale-blue), white 55%, var(--pale-pink));
+    }
+
+    /* ABOUT */
+
+    .about-card {
+      border-top: 4px solid var(--maroon);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .stat {
+      background: var(--pale-blue);
+      border: 1px solid var(--light-blue);
+      border-radius: 13px;
+      padding: 18px 12px;
+      text-align: center;
+    }
+
+    .stat:nth-child(2) {
+      background: var(--pale-pink);
+      border-color: var(--soft-pink);
+    }
+
+    .stat:nth-child(3) {
+      background: var(--lavender-blue);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--navy);
+      font-size: 1.55rem;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.73rem;
+      line-height: 1.5;
+    }
+
+   
+/* RESUME SECTION */
+
+.resume-section {
+  border-top: 4px solid var(--blue);
+}
+
+.resume-card {
+  background: linear-gradient(
+    135deg,
+    var(--pale-blue),
+    #ffffff 60%,
+    var(--pale-pink)
+  );
+
+  border: 1px solid var(--light-blue);
+  border-radius: 16px;
+  padding: 35px 25px;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.resume-icon {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 20px;
+  border-radius: 16px;
+  background: var(--navy);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.resume-card h3 {
+  color: var(--navy);
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+.resume-card p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.resume-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 520px) {
+  .resume-card {
+    padding: 25px 16px;
+  }
+
+  .resume-actions {
+    flex-direction: column;
+  }
+
+  .resume-actions .button {
+    width: 100%;
+  }
+}
+
+
+
+    /* SECTION HEADERS */
+
+    .content-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 7px 0 -7px;
+    }
+
+    .content-heading h2 {
+      color: var(--navy);
+      font-size: 1.8rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 0;
+    }
+
+    /* PROJECTS */
+
+    .spotlight {
+      background: linear-gradient(130deg, var(--pale-blue), white 60%, var(--pale-pink));
+      border-left: 5px solid var(--maroon);
+    }
+
+    .spotlight h3 {
+      color: var(--navy);
+      font-size: 1.55rem;
+      margin: 13px 0;
+    }
+
+    .project-category {
+      color: var(--maroon);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      padding: 25px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .project-card:hover,
+    .mini-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .project-card h3 {
+      color: var(--navy);
+      font-size: 1.13rem;
+      margin: 12px 0;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .project-card:nth-child(2) {
+      background: linear-gradient(140deg, white, var(--pale-pink));
+    }
+
+    .project-card:nth-child(3) {
+      background: linear-gradient(140deg, white, var(--lavender-blue));
+    }
+
+    /* LOWER SECTIONS */
+
+    .full-section {
+      padding: 30px 0 55px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 740px;
+      margin-bottom: 26px;
+    }
+
+    .three-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .mini-card {
+      padding: 26px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .mini-card h3 {
+      color: var(--navy);
+      font-size: 1.12rem;
+      margin: 12px 0;
+    }
+
+    .mini-card p {
+      color: var(--muted);
+      font-size: 0.87rem;
+    }
+
+    .mini-card:nth-child(3n+2) {
+      background: linear-gradient(145deg, white, var(--pale-blue));
+    }
+
+    .mini-card:nth-child(3n+3) {
+      background: linear-gradient(145deg, white, var(--pale-pink));
+    }
+
+    .card-icon {
+      width: 43px;
+      height: 43px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: var(--light-blue);
+      color: var(--navy);
+      font-size: 0.83rem;
+      font-weight: 800;
+    }
+
+    .card-icon.pink {
+      background: var(--soft-pink);
+      color: var(--maroon);
+    }
+
+    .card-icon.lavender {
+      background: var(--lavender-blue);
+    }
+
+    /* SKILLS */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .skill-card {
+      padding: 24px;
+    }
+
+    .skill-card h3 {
+      color: var(--navy);
+      font-size: 1rem;
+      margin: 12px 0 8px;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin: 0;
+    }
+
+    /* CERTIFICATIONS */
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .cert-card {
+      padding: 23px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .cert-card h3 {
+      color: var(--navy);
+      font-size: 0.96rem;
+      margin-bottom: 7px;
+    }
+
+    .cert-card p {
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin: 0;
+    }
+
+    .cert-symbol {
+      width: 43px;
+      height: 43px;
+      border-radius: 11px;
+      background: var(--pale-blue);
+      color: var(--navy);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      font-size: 0.73rem;
+      font-weight: 800;
+    }
+
+    /* CONTACT */
+
+    .contact-section {
+      padding: 30px 0 70px;
+    }
+
+    .contact-panel {
+      padding: 55px;
+      background: linear-gradient(125deg, var(--navy), var(--navy-soft));
+      border-radius: 23px;
+      color: white;
+      text-align: center;
+    }
+
+    .contact-panel h2 {
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      margin: 12px auto 18px;
+      max-width: 680px;
+    }
+
+    .contact-panel p {
+      color: var(--light-blue);
+      max-width: 620px;
+      margin: 0 auto 25px;
+    }
+
+    .contact-panel .section-label {
+      color: #f3bdcb;
+    }
+
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* FOOTER */
+
+    .site-footer {
+      background: var(--navy-dark);
+      color: var(--light-blue);
+      padding: 25px 0;
+      text-align: center;
+      font-size: 0.82rem;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1000px) {
+      .dashboard-layout {
+        grid-template-columns: 250px minmax(0, 1fr);
+        gap: 18px;
+      }
+
+      .three-grid,
+      .skills-grid,
+      .cert-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .portfolio-banner {
+        padding: 45px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .dashboard-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-banner {
+        min-height: auto;
+        padding: 38px 25px;
+      }
+
+      .portfolio-banner h1 {
+        font-size: 2.4rem;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .navigation {
+        align-items: flex-start;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        gap: 11px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(calc(100% - 26px), var(--container-width));
+      }
+
+      .portfolio-banner {
+        border-radius: 16px;
+      }
+
+      .portfolio-banner h1 {
+        font-size: 2rem;
+      }
+
+      .card-body {
+        padding: 23px;
+      }
+
+      .stats,
+      .three-grid,
+      .skills-grid,
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-panel {
+        padding: 36px 22px;
+      }
+
+      .navigation {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .banner-actions .button,
+      .project-actions .button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- Navigation -->
-    <header class="site-header">
-        <div class="container navigation">
+  <!-- NAVIGATION -->
+  <header class="site-header">
+    <div class="container navigation">
+      <a href="#home" class="logo">MG</a>
 
-            <a href="#home" class="logo" aria-label="Mandira Ghimire home">
-                MG
-            </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#collaboration">Collaboration</a>
+        <a href="#programs">Programs</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Credentials</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-            <nav class="nav-links" aria-label="Main navigation">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#collaboration">Collaboration</a>
-                <a href="#certifications">Certifications</a>
-                <a href="#contact">Contact</a>
-            </nav>
+  <main>
+
+    <!-- HERO -->
+    <section id="home" class="portfolio-hero">
+      <div class="container">
+        <div class="portfolio-banner">
+
+          <div class="banner-content">
+            <p class="eyebrow banner-eyebrow">
+              DATA ANALYTICS · BUSINESS INTELLIGENCE · HEALTHCARE · FINANCE
+            </p>
+
+            <h1>
+              Turning complex data into
+              <span>meaningful decisions.</span>
+            </h1>
+
+            <p class="banner-description">
+    
+            </p>
+
+            <div class="banner-actions">
+              <a href="#projects" class="button button-light">
+                Explore My Work
+              </a>
+
+              <a href="#contact" class="button button-outline-light">
+                Let's Connect
+              </a>
+            </div>
+          </div>
+
+          <div class="banner-circle circle-one"></div>
+          <div class="banner-circle circle-two"></div>
+          <div class="banner-circle circle-three"></div>
 
         </div>
-    </header>
-
-    <main>
-
-        <!-- Hero -->
-        <section id="home" class="hero">
-
-            <div class="decorative-shape shape-one"></div>
-            <div class="decorative-shape shape-two"></div>
-
-            <div class="container hero-layout">
-
-                <div class="hero-content">
-
-                    <p class="eyebrow">
-                        Finance · Data· Business Analysis · Healthcare
-                    </p>
-
-                    <h1>Mandira Ghimire</h1>
-
-                    <h2>
-                        BI Data Analyst | Business Analyst | AI/ML
-                    </h2>
-
-                    <p class="hero-description">
-                        I use data, visualization, and business analysis to
-                        uncover patterns, improve processes, and support
-                        informed decision-making.
-                    </p>
-
-                    <div class="hero-actions">
-
-                        <a href="#projects" class="button button-primary">
-                            Explore My Work
-                        </a>
-
-                        <a
-                            href="resume/Mandira-Resume.pdf"
-                            class="button button-secondary"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            View Resume
-                        </a>
-
-                    </div>
-
-                    <div class="quick-details">
-                        <span>Massachusetts, USA</span>
-                        <span>Open to analyst opportunities</span>
-                    </div>
-
-                </div>
-
-                <!-- Professional photo -->
-                <div class="profile-visual">
-
-                    <div class="profile-background"></div>
-
-                    <div class="profile-image-wrapper">
-                        <img
-                            src="images/mandira-profile.jpg"
-                            alt="Professional portrait of Mandira Ghimire"
-                            class="profile-image"
-                        >
-                    </div>
-
-                    <div class="profile-note">
-                        <strong>MS in Data Analytics</strong>
-                        <span>Clark University · Dean's Scholar 2024</span>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- About -->
-        <section id="about" class="section">
-            <div class="container about-layout">
-
-                <div>
-                    <p class="section-label">About</p>
-
-                    <h2>
-                        Connecting data insights with real business needs
-                    </h2>
-                </div>
-
-                <div class="about-content">
-
-                    <p>
-                        I am a recent Master of Science in Data Analytics
-                        graduate with experience across analytics, business
-                        operations, healthcare, reporting, and stakeholder
-                        communication.
-                    </p>
-
-                    <p>
-                        My work focuses on understanding the problem behind the
-                        data, selecting the right analytical approach, and
-                        presenting findings clearly through dashboards,
-                        visualizations, reports, and actionable recommendations.
-                    </p>
-
-                    <div class="about-stats">
-
-                        <div class="stat-card">
-                            <strong>10+</strong>
-                            <span>Analytics projects</span>
-                        </div>
-
-                        <div class="stat-card">
-                            <strong>5+</strong>
-                            <span>Industry domains</span>
-                        </div>
-
-                        <div class="stat-card">
-                            <strong>8+</strong>
-                            <span>Technical tools</span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Featured projects -->
-        <section id="projects" class="section projects-section">
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <div>
-                        <p class="section-label">Portfolio</p>
-                        <h2>Featured projects</h2>
-                    </div>
-
-                    <a href="projects.html" class="text-link">
-                        View all projects →
-                    </a>
-
-                </div>
-
-                <div class="project-grid">
-
-                    <article class="project-card">
-
-                        <div class="project-topline">
-                            <span class="project-number">01</span>
-                            <span class="project-category">
-                                Healthcare Analytics
-                            </span>
-                        </div>
-
-                        <h3>ICU Analytics Using BigQuery</h3>
-
-                        <p>
-                            Analyzed ICU and patient data to explore length of
-                            stay, resource utilization, and important clinical
-                            and operational patterns.
-                        </p>
-
-                        <div class="technology-list">
-                            <span>BigQuery</span>
-                            <span>SQL</span>
-                            <span>Healthcare</span>
-                            <span>Tableau</span>
-                        </div>
-
-                        <a href="projects/icu-analytics.html" class="text-link">
-                            View case study →
-                        </a>
- 
-                    </article>
-
-                    <article class="project-card featured-card">
-
-                        <div class="project-topline">
-                            <span class="project-number">02</span>
-                            <span class="project-category">
-                                Business Analysis
-                            </span>
-                        </div>
-
-                        <h3>Hospital Wait-Time Improvement</h3>
-
-                        <p>
-                            Designed a scheduling and resource-tracking solution
-                            to improve patient flow, operational visibility, and
-                            communication.
-                        </p>
-
-                        <div class="technology-list">
-                            <span>BRD</span>
-                            <span>BPMN</span>
-                            <span>Power BI</span>
-                        </div>
-
-                        <a href="projects/hospital-wait-time.html" class="text-link">
-                            View case study →
-                        </a>
-
-                    </article>
-
-                    <article class="project-card">
-
-                        <div class="project-topline">
-                            <span class="project-number">03</span>
-                            <span class="project-category">
-                                Healthcare Cost Analytics
-                            </span>
-                        </div>
-
-                        <h3>Hospital Spending Analysis</h3>
-
-                        <p>
-                               Analyzed Medicare hospital spending by claim type to compare
-                                hospital, state, and national spending patterns and identify
-                                potential cost drivers and areas for further investigation.
-                        </p>
-
-                        <div class="technology-list">
-                            <span>Healthcare Claims</span>
-                            <span>Kaggle</span>
-                            <span>Excel</span>
-                            
-
-                        </div>
-
-                        <a href="projects/hospital-spending.html" class="text-link">
-                            View case study →
-                        </a>
-
-                    </article>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Collaboration -->
-        <!-- Research, Open Source and Collaboration -->
-<section id="collaboration" class="section collaboration-section">
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div>
-                <p class="section-label">
-                    Research · Open Source · Collaboration
+      </div>
+    </section>
+
+    <!-- PROFILE DASHBOARD -->
+    <section class="dashboard">
+      <div class="container dashboard-layout">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar">
+
+          <div class="card">
+            <div class="profile-cover"></div>
+
+            <div class="profile-content">
+              <div class="profile-avatar">
+                <img
+                  src="images/mandira-profile.jpg"
+                  alt="Mandira Ghimire"
+                >
+              </div>
+
+              <h2>Mandira Ghimire</h2>
+
+              <p class="profile-headline">
+                BI Data Analyst | Business Analyst 
+              </p>
+
+              <p class="profile-location">
+                Massachusetts, United States
+              </p>
+
+              <div class="sidebar-divider"></div>
+
+              <div class="profile-detail">
+                <small>EDUCATION</small>
+                <strong>Clark University</strong>
+                <p>MS in Data Analytics</p>
+              </div>
+
+              <div class="profile-detail">
+                <small>PROFESSIONAL FOCUS</small>
+                <p>
+                  
+                  Finance Analytics<br>
+                  Business Intelligence<br>
+                  Healthcare Analytics<br>
+                  
                 </p>
+              </div>
 
-                <h2>
-                    Collaborative projects and applied research
-                </h2>
+              <div class="sidebar-divider"></div>
+
+              <a
+                href="resume/Mandira-Resume.pdf"
+                class="button button-primary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Resume
+              </a>
+
+              <a href="mailto:maghimire1@gmail.com" class="contact-text-link">
+                Contact Me →
+              </a>
+            </div>
+          </div>
+
+          <div class="card widget">
+            <h3>Core Skills</h3>
+
+            <div class="tags">
+              <span class="tag">SQL</span>
+              <span class="tag">Power BI</span>
+              <span class="tag">Tableau</span>
+              <span class="tag">Python</span>
+              <span class="tag">Excel</span>
+              <span class="tag">BigQuery</span>
+              <span class="tag pink">Healthcare</span>
+              <span class="tag pink">Business Analysis</span>
             </div>
 
-        </div>
+            <a href="#skills" class="text-link">View All Skills →</a>
+          </div>
 
-        <p class="section-introduction">
-            These projects demonstrate my experience working across
-            research, open-source, environmental, healthcare, and
-            international collaborative settings.
+          <div class="card widget highlight-widget">
+            <p class="section-label">Professional Interests</p>
+            <h3>Healthcare, Data & AI</h3>
+
+            <p class="body-text">
+              Interested in solving business and healthcare problems
+              through analytics, process improvement, and responsible
+              AI-assisted solutions.
+            </p>
+
+            <a href="#programs" class="text-link">
+              Explore My Programs →
+            </a>
+          </div>
+
+          <div class="card widget">
+            <h3>Connect</h3>
+            <p class="body-text">
+              Open to professional networking, collaboration,
+              and analytics opportunities.
+            </p>
+
+            <a
+              href="https://github.com/mandiragh"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-link"
+            >
+              GitHub Profile →
+            </a>
+          </div>
+
+        </aside>
+
+        <!-- MAIN COLUMN -->
+        <div class="main-column">
+
+          <!-- ABOUT -->
+          <section id="about" class="card about-card">
+            <div class="card-body">
+
+              <p class="section-label">About Me</p>
+              <h2 class="section-title">
+                Connecting data insights with real business needs
+              </h2>
+
+              <p class="body-text">
+                I am a BI Data Analyst Professional and a Data Analytics graduate from Clark University
+                with experience in finance, healthcare operations, business
+                intelligence, reporting, and business analysis.
+                I focus on understanding business problems, defining
+                useful metrics, and translating data into insights
+                that support informed decisions.
+              </p>
+
+              <p class="body-text">
+                My work includes SQL analysis, Power BI dashboards,
+                Python-based analytics, healthcare data projects,
+                process improvement, and AI-assisted applications.
+                I enjoy collaborating with technical and non-technical
+                teams to build practical solutions.
+              </p>
+
+              <div class="stats">
+                <div class="stat">
+                  <strong>10+</strong>
+                  <span>Portfolio Projects</span>
+                </div>
+
+                <div class="stat">
+                  <strong>3</strong>
+                  <span>Core Focus Areas</span>
+                </div>
+
+                <div class="stat">
+                  <strong>8+</strong>
+                  <span>Technical Tools</span>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          
+<!-- RESUME SECTION -->
+<section id="experience" class="card resume-section">
+  <div class="card-body">
+
+    <p class="section-label">Professional Background</p>
+    <h2 class="section-title">Experience</h2>
+
+    <p class="body-text">
+      Explore my professional experience, education,
+      technical expertise, and qualifications in
+      Data Analytics, Business Intelligence, and Business Analysis and Projects.
+    </p>
+
+    <div class="resume-card">
+
+      <h3>Professional Resume</h3>
+
+      <div class="resume-actions">
+
+        <a
+          href="resume/Mandira_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="button button-primary"
+        >
+          View Resume
+        </a>
+
+        <a
+          href="resume/Mandira_Resume.pdf"
+          download="Mandira_Resume.pdf"
+          class="button button-secondary"
+        >
+          Download Resume
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+          <!-- FEATURED PROJECTS -->
+          <div id="projects" class="content-heading">
+            <div>
+              <p class="section-label">Selected Work</p>
+              <h2>Featured Projects</h2>
+            </div>
+          </div>
+
+          <!-- HEALTHSIGHT -->
+          <article class="card spotlight">
+            <div class="card-body">
+
+              <span class="project-category">
+                AI · HEALTHCARE ANALYTICS · GOOGLE CLOUD
+              </span>
+
+              <h3>HealthSight — Agentic Healthcare Analytics</h3>
+
+              <p class="body-text">
+                Developed an AI-assisted healthcare analytics
+                application that enables natural-language exploration
+                of Medicare data using Gemini, Google BigQuery,
+                Python, and Google Cloud.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Gemini</span>
+                <span class="tag">BigQuery</span>
+                <span class="tag">Python</span>
+                <span class="tag">Google Cloud</span>
+                <span class="tag pink">Healthcare AI</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="projects/healthsight.html" class="button button-primary">
+                  View Case Study
+                </a>
+
+                <a
+                  href="https://healthsight-285849155638.us-east1.run.app/"
+                  class="button button-secondary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Demo
+                </a>
+
+                <a
+                  href="https://github.com/mandiragh/Patchamomma_ma"
+                  class="button button-secondary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub
+                </a>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- OTHER PROJECTS -->
+          <div class="project-grid">
+
+            <article class="card project-card">
+              <span class="project-category">Business Analysis</span>
+
+              <h3>Hospital Wait-Time Improvement</h3>
+
+              <p>
+                A healthcare business analysis case study
+                proposing improvements to scheduling,
+                resource tracking, and KPI monitoring,
+                with a target of reducing wait times by 20%.
+              </p>
+
+              <div class="tags">
+                <span class="tag">BPMN</span>
+                <span class="tag">BRD</span>
+                <span class="tag">KPIs</span>
+              </div>
+            </article>
+
+            <article class="card project-card">
+              <span class="project-category">Healthcare Data</span>
+
+              <h3>ICU Analytics with BigQuery</h3>
+
+              <p>
+                Analyzed intensive care data to investigate
+                operational trends, patient utilization,
+                and healthcare reporting opportunities.
+              </p>
+
+              <div class="tags">
+                <span class="tag">SQL</span>
+                <span class="tag">BigQuery</span>
+                <span class="tag">Healthcare</span>
+              </div>
+            </article>
+
+            <article class="card project-card">
+              <span class="project-category">Financial Analytics</span>
+
+              <h3>Medicare Hospital Spending</h3>
+
+              <p>
+                Explored Medicare spending patterns,
+                claim categories, provider differences,
+                and benchmark comparisons to support
+                financial analysis.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Medicare</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Reporting</span>
+              </div>
+            </article>
+
+            <article class="card project-card">
+              <span class="project-category">Machine Learning</span>
+
+              <h3>Bone Tumor X-Ray Classification</h3>
+
+              <p>
+                Explored deep-learning approaches
+                to medical image analysis using
+                classification and object-detection models.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">ResNet50</span>
+                <span class="tag">YOLOv8</span>
+              </div>
+            </article>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLABORATION -->
+    <section id="collaboration" class="full-section">
+      <div class="container">
+
+        <p class="section-label">Research & Collaboration</p>
+        <h2 class="section-title">Collaborative Work</h2>
+
+        <p class="section-intro">
+          Research and applied analytics projects developed
+          through interdisciplinary teamwork and collaboration.
         </p>
 
-        <div class="collaboration-grid">
+        <div class="three-grid">
 
-            <!-- Omdena -->
-            <article class="collaboration-card featured-collaboration">
+          <article class="card mini-card">
+            <div class="card-icon">AI</div>
 
-                <div class="collaboration-icon">
-                    01
-                </div>
+            <h3>Omdena — AI-Powered Carbon Management</h3>
 
-                <div class="collaboration-content">
+            <p>
+              Collaborative work exploring environmental
+              data and analytics approaches for carbon
+              emissions measurement and reporting.
+            </p>
 
-                    <div class="collaboration-heading">
-
-                        <div>
-                            <p class="project-category">
-                                Open-Source AI Collaboration
-                            </p>
-
-                            <h3>
-                                AI-Powered Carbon Management Solution
-                            </h3>
-                        </div>
-
-                        <span class="project-status completed">
-                            Completed
-                        </span>
-
-                    </div>
-
-                    <p>
-                        Collaborated with an international team through
-                        Omdena to develop an AI-powered carbon management
-                        solution for small and medium-sized enterprises.
-                    </p>
-
-                    <p>
-                        The project addressed the barriers SMEs face when
-                        estimating emissions, tracking sustainability
-                        performance, responding to regulatory requirements,
-                        and developing practical carbon-reduction strategies.
-                    </p>
-
-                    <div class="contribution-box">
-
-                        <h4>My contributions</h4>
-
-                        <ul class="contribution-list">
-                            <li>Data collection and preprocessing</li>
-                            <li>Exploratory data analysis</li>
-                            <li>Carbon-emissions research</li>
-                            <li>Feature and solution development</li>
-                            <li>GitHub-based team collaboration</li>
-                            <li>Documentation and stakeholder communication</li>
-                        </ul>
-
-                    </div>
-
-                    <div class="technology-list">
-                        <span>Python</span>
-                        <span>Data Analysis</span>
-                        <span>Machine Learning</span>
-                        <span>Carbon Analytics</span>
-                        <span>GitHub</span>
-                        <span>Open Source</span>
-                    </div>
-
-                    <div class="collaboration-links">
-
-                        <a
-                            href="#"
-                            class="text-link"
-                        >
-                            View project →
-                        </a>
-
-                        <a
-                            href="#"
-                            class="text-link secondary-link"
-                        >
-                            View repository →
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- Screen Time Research -->
-            <article class="collaboration-card">
-
-                <div class="collaboration-icon">
-                    02
-                </div>
-
-                <div class="collaboration-content">
-
-                    <div class="collaboration-heading">
-
-                        <div>
-                            <p class="project-category">
-                                Healthcare Research
-                            </p>
-
-                            <h3>
-                                Screen Time and Child Behavioral Analysis
-                            </h3>
-                        </div>
-
-                        <span class="project-status completed">
-                            Completed
-                        </span>
-
-                    </div>
-
-                    <p>
-                        Analyzed national survey data to examine relationships
-                        between children's screen time, demographic factors,
-                        health indicators, and behavioral outcomes.
-                    </p>
-
-                    <p>
-                        The project included data preparation, feature
-                        engineering, model comparison, and interpretation of
-                        factors associated with behavioral-health risk.
-                    </p>
-
-                    <div class="contribution-box">
-
-                        <h4>My contributions</h4>
-
-                        <ul class="contribution-list">
-                            <li>Data cleaning and validation</li>
-                            <li>Exploratory data analysis</li>
-                            <li>Feature engineering</li>
-                            <li>Predictive-model development</li>
-                            <li>Model evaluation</li>
-                            <li>Research visualization and interpretation</li>
-                        </ul>
-
-                    </div>
-
-                    <div class="technology-list">
-                        <span>Python</span>
-                        <span>Pandas</span>
-                        <span>Random Forest</span>
-                        <span>XGBoost</span>
-                        <span>Healthcare Analytics</span>
-                    </div>
-
-                    <div class="collaboration-links">
-
-                        <a
-                            href="#"
-                            class="text-link"
-                        >
-                            View case study →
-                        </a>
-
-                        <a
-                            href="#"
-                            class="text-link secondary-link"
-                        >
-                            View repository →
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            <!-- Delhi Air Quality -->
-            <article class="collaboration-card">
-
-                <div class="collaboration-icon">
-                    03
-                </div>
-
-                <div class="collaboration-content">
-
-                    <div class="collaboration-heading">
-
-                        <div>
-                            <p class="project-category">
-                                Environmental Analytics
-                            </p>
-
-                            <h3>
-                                Urban Air Quality Analytics — Delhi
-                            </h3>
-                        </div>
-
-                        <span class="project-status completed">
-                            Completed
-                        </span>
-
-                    </div>
-
-                    <p>
-                        Investigated historical air-quality patterns across
-                        Delhi to identify seasonal pollution trends, periods
-                        of elevated risk, and environmental factors associated
-                        with changing air-quality conditions.
-                    </p>
-
-                    <p>
-                        The analysis focused on translating environmental data
-                        into clear visual trends and public-health-oriented
-                        observations.
-                    </p>
-
-                    <div class="contribution-box">
-
-                        <h4>My contributions</h4>
-
-                        <ul class="contribution-list">
-                            <li>Environmental data preparation</li>
-                            <li>Time-series and seasonal trend analysis</li>
-                            <li>Pollutant-level comparison</li>
-                            <li>Data visualization</li>
-                            <li>Dashboard and insight development</li>
-                        </ul>
-
-                    </div>
-
-                    <div class="technology-list">
-                        <span>Python</span>
-                        <span>Data Visualization</span>
-                        <span>Time-Series Analysis</span>
-                        <span>Environmental Data</span>
-                    </div>
-
-                    <div class="collaboration-links">
-
-                        <a
-                            href="#"
-                            class="text-link"
-                        >
-                            View case study →
-                        </a>
-
-                        <a
-                            href="#"
-                            class="text-link secondary-link"
-                        >
-                            View repository →
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </div>
-</section>
-
-
-<!-- Developer Programs and Hackathons -->
-<section id="developer-programs" class="section developer-programs-section">
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div>
-                <p class="section-label">
-                    Developer Programs · Hackathons
-                </p>
-
-                <h2>
-                    Currently learning and building
-                </h2>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Sustainability</span>
             </div>
+          </article>
 
-        </div>
+          <article class="card mini-card">
+            <div class="card-icon pink">HC</div>
 
-        <div class="developer-program-grid">
+            <h3>Screen Time & Child Behavioral Health</h3>
 
-           <article class="developer-program-card">
+            <p>
+              Research exploring relationships between
+              screen-time patterns and child health
+              or behavioral indicators.
+            </p>
 
-    <div class="developer-program-topline">
-        <div class="program-symbol">G</div>
-
-        <span class="project-status completed">
-            COMPLETED · 2026
-        </span>
-    </div>
-
-    <p class="project-category">
-        GOOGLE DEVELOPER PROGRAM
-    </p>
-
-    <h3>Patchamomma 2026 · HealthSight</h3>
-
-    <p>
-        Completed Patchamomma 2026 through the Google Developer Program,
-        where I designed, built, and deployed <strong>HealthSight</strong> —
-        an agentic healthcare analytics application that enables users to
-        explore CMS Medicare data through natural-language questions and
-        receive data-driven insights without manually writing SQL.
-    </p>
-
-    <div class="program-highlight">
-        <strong>Built & Deployed:</strong>
-        HealthSight combines Google Cloud, BigQuery, Gemini, and
-        agentic AI to make healthcare data exploration more accessible
-        to non-technical users.
-    </div>
-
-    <div class="technology-list">
-        <span>Google Cloud</span>
-        <span>BigQuery</span>
-        <span>Gemini</span>
-        <span>Agentic AI</span>
-        <span>Cloud Run</span>
-        <span>Python</span>
-        <span>Healthcare Analytics</span>
-    </div>
-
-    <div class="collaboration-links">
-
-        <a href="https://healthsight-285849155638.us-east1.run.app/"
-           class="text-link"
-           target="_blank"
-           rel="noopener noreferrer">
-            Live Demo →
-        </a>
-
-        <a href="https://github.com/mandiragh/Patchamomma_ma"
-           class="text-link"
-           target="_blank"
-           rel="noopener noreferrer">
-            GitHub →
-        </a>
-
-        <a href="projects/healthsight.html"
-           class="text-link">
-            View Case Study →
-        </a>
-
-        <a href="documents/certifications/patchamomma-learning-phase.pdf"
-           class="text-link"
-           target="_blank"
-           rel="noopener noreferrer">
-            Learning Certificate → 
-        </a>
-
-    </div>
-
-</article>
-
-            <!-- HackRare 2026 -->
-<article class="developer-program-card">
-
-    <div class="developer-program-topline">
-
-        <div class="program-symbol">
-            HR
-        </div>
-
-        <span class="project-status completed">
-            Completed · 2026
-        </span>
-
-    </div>
-
-    <p class="project-category">
-        Harvard University · HackRare
-    </p>
-
-    <h3>
-        Papilot
-    </h3>
-
-    <p>
-        Collaborated on <strong>Papilot</strong>, a healthcare innovation
-        project developed during HackRare 2026 to improve support and
-        accessibility for individuals and families affected by rare diseases
-        through a user-centered digital solution.
-    </p>
-
-    <div class="technology-list">
-        <span>Healthcare</span>
-        <span>UX Research</span>
-        <span>AI</span>
-        <span>Rapid Prototyping</span>
-        <span>Team Collaboration</span>
-    </div>
-
-    <a
-        href="https://devpost.com/software/papilot"
-        class="text-link"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        View Devpost →
-    </a>
-
-</article>
-
-
-<!-- HackRare 2025 -->
-<article class="developer-program-card">
-
-    <div class="developer-program-topline">
-
-        <div class="program-symbol">
-            HR
-        </div>
-
-        <span class="project-status completed">
-            Completed · 2025
-        </span>
-
-    </div>
-
-    <p class="project-category">
-        Harvard University · HackRare
-    </p>
-
-    <h3>
-        AIRIAS
-    </h3>
-
-    <p>
-        Collaborated on an AI-powered ocular screening concept for
-        Stevens–Johnson syndrome using real-time eye-image analysis
-        to support earlier assessment, severity grading, and referral.
-    </p>
-
-    <div class="technology-list">
-        <span>Healthcare AI</span>
-        <span>CNN</span>
-        <span>Medical Imaging</span>
-        <span>Rare Disease</span>
-        <span>Rapid Prototyping</span>
-    </div>
-
-    <a
-        href="../documents/hack-rare-2025-airias.pdf"
-        class="text-link"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        View presentation →
-    </a>
-
-</article>
-
-
-<!-- BU Spark Civic Hackathon -->
-<article class="developer-program-card">
-
-    <div class="developer-program-topline">
-
-        <div class="program-symbol">
-            BU
-        </div>
-
-        <span class="project-status completed">
-            Completed · 2025
-        </span>
-
-    </div>
-
-    <p class="project-category">
-        BU Spark! · Civic Hackathon
-    </p>
-
-    <h3>
-        AI-Assisted Focus Tool
-    </h3>
-
-    <p>
-        Collaborated on an AI-assisted browser tool designed to help
-        neurodivergent students stay focused online by reducing
-        distractions and providing learning-support features.
-    </p>
-
-    <div class="technology-list">
-        <span>JavaScript</span>
-        <span>Python</span>
-        <span>Browser Extension</span>
-        <span>Accessibility</span>
-        <span>AI</span>
-    </div>
-
-    <a
-        href="https://github.com/BonnieLin1123/AI-Assisting-Tool"
-        class="text-link"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        View repository →
-    </a>
-
-</article>
-
-
-<!-- Nepali Hackathon -->
-<article class="developer-program-card">
-
-    <div class="developer-program-topline">
-
-        <div class="program-symbol">
-            MC
-        </div>
-
-        <span class="project-status completed">
-            Completed · 2025
-        </span>
-
-    </div>
-
-    <p class="project-category">
-        Nepali AI Hackathon
-    </p>
-
-    <h3>
-        Ma Chu Ni
-    </h3>
-
-    <p>
-        Developed an app concept to help Nepalis living abroad,
-        including international students and migrant workers in Gulf
-        countries, connect with embassy services, human-rights
-        resources, and trusted community support.
-    </p>
-
-    <div class="technology-list">
-        <span>Community Technology</span>
-        <span>Human Rights</span>
-        <span>App Concept</span>
-        <span>User Research</span>
-        <span>International Support</span>
-    </div>
-
-    <a href="https://github.com/ShrillShrestha/Machuni" class="text-link">
-        Project repository →
-    </a>
-
-</article>
-
-        </div>
-
-    </div>
-</section>
-
-        <!-- Skills -->
-        <section id="skills" class="section">
-    <div class="container">
-
-        <div class="section-heading">
-            <div>
-                <p class="section-label">Technical Skills</p>
-                <h2>Tools and technologies I work with</h2>
+            <div class="tags">
+              <span class="tag">Statistics</span>
+              <span class="tag">Research</span>
             </div>
+          </article>
+
+          <article class="card mini-card">
+            <div class="card-icon lavender">AQ</div>
+
+            <h3>Delhi Air Quality Analysis</h3>
+
+            <p>
+              Environmental analytics work exploring
+              urban air-quality patterns, indicators,
+              and visual storytelling.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Visualization</span>
+            </div>
+          </article>
+
         </div>
+      </div>
+    </section>
+
+    <!-- DEVELOPER PROGRAMS -->
+    <section id="programs" class="full-section">
+      <div class="container">
+
+        <p class="section-label">Community & Innovation</p>
+        <h2 class="section-title">Developer Programs & Hackathons</h2>
+
+        <p class="section-intro">
+          Building prototypes, collaborating across teams,
+          and applying technology to healthcare and
+          community challenges.
+        </p>
+
+        <div class="three-grid">
+
+          <article class="card mini-card">
+            <div class="card-icon">G</div>
+
+            <span class="project-category">Google Developer Program · 2026</span>
+
+            <h3>Patchamomma — HealthSight</h3>
+
+            <p>
+              Built an agentic healthcare analytics
+              application using Google Cloud, Gemini,
+              BigQuery, and Python.
+            </p>
+
+            <a
+              href="https://github.com/mandiragh/Patchamomma_ma"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-link"
+            >
+              View GitHub →
+            </a>
+          </article>
+
+          <article class="card mini-card">
+            <div class="card-icon pink">HR</div>
+
+            <span class="project-category">HackRare · 2026</span>
+
+            <h3>Papilot</h3>
+
+            <p>
+              Healthcare innovation project developed
+              during HackRare 2026, focused on challenges
+              faced by rare-disease communities.
+            </p>
+
+            <a
+              href="https://devpost.com/software/papilot"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-link"
+            >
+              View Project →
+            </a>
+          </article>
+
+          <article class="card mini-card">
+            <div class="card-icon lavender">HR</div>
+
+            <span class="project-category">HackRare · 2025</span>
+
+            <h3>AIRIAS</h3>
+
+            <p>
+              AI-assisted ocular screening concept
+              exploring applications in rare-disease
+              healthcare.
+            </p>
+          </article>
+
+          <article class="card mini-card">
+            <div class="card-icon">BU</div>
+
+            <span class="project-category">BU Spark! Civic Hack · 2025</span>
+
+            <h3>AI-Assisted Focus Tool</h3>
+
+            <p>
+              Collaborative prototype designed
+              to support focus and reduce digital
+              distractions for neurodivergent students.
+            </p>
+          </article>
+
+          <article class="card mini-card">
+            <div class="card-icon pink">NP</div>
+
+            <span class="project-category">Nepali AI Hackathon · 2025</span>
+
+            <h3>Ma Chu Ni</h3>
+
+            <p>
+              Community-focused concept exploring
+              access to information, support,
+              and resources for Nepalis abroad.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="full-section">
+      <div class="container">
+
+        <p class="section-label">Technical Capabilities</p>
+        <h2 class="section-title">Skills & Tools</h2>
 
         <div class="skills-grid">
 
-            <article class="skill-card">
+          <article class="card skill-card">
+            <div class="card-icon">SQL</div>
+            <h3>Programming & Data</h3>
+            <p>SQL, Python, R, SAS, Pandas, NumPy</p>
+          </article>
 
-                <span class="skill-number">01</span>
+          <article class="card skill-card">
+            <div class="card-icon pink">BI</div>
+            <h3>Business Intelligence</h3>
+            <p>Power BI, Tableau, Excel, Power Query</p>
+          </article>
 
-                <h3>Programming</h3>
+          <article class="card skill-card">
+            <div class="card-icon lavender">ML</div>
+            <h3>Machine Learning</h3>
+            <p>Scikit-learn, Regression, Classification, Model Evaluation</p>
+          </article>
 
-                <p>
-                    Python, SQL, R, SAS
-                </p>
+          <article class="card skill-card">
+            <div class="card-icon">BA</div>
+            <h3>Business Analysis</h3>
+            <p>BRD, BPMN, Requirements, Process Mapping, Stakeholders</p>
+          </article>
 
-            </article>
+          <article class="card skill-card">
+            <div class="card-icon pink">AI</div>
+            <h3>Cloud & AI</h3>
+            <p>BigQuery, Google Cloud, Gemini, Snowflake</p>
+          </article>
 
-            <article class="skill-card">
+          <article class="card skill-card">
+            <div class="card-icon lavender">DB</div>
+            <h3>Databases</h3>
+            <p>MySQL, SQL Server, Oracle, PostgreSQL</p>
+          </article>
 
-                <span class="skill-number">02</span>
+          <article class="card skill-card">
+            <div class="card-icon">DV</div>
+            <h3>Data Visualization</h3>
+            <p>Dashboards, KPI Design, Data Storytelling</p>
+          </article>
 
-                <h3>Analytics & BI</h3>
+          <article class="card skill-card">
+            <div class="card-icon pink">APP</div>
+            <h3>Application Tools</h3>
+            <p>Streamlit, GitHub, Jupyter, VS Code</p>
+          </article>
 
-                <p>
-                    Power BI, Tableau, Excel, Google BigQuery
-                </p>
-
-            </article>
-
-            <article class="skill-card">
-
-                <span class="skill-number">03</span>
-
-                <h3>Machine Learning</h3>
-
-                <p>
-                    Scikit-learn, XGBoost, Random Forest, Pandas, NumPy
-                </p>
-
-            </article>
-
-            <article class="skill-card">
-
-                <span class="skill-number">04</span>
-
-                <h3>Business Analysis</h3>
-
-                <p>
-                    BRD, BPMN, RTM, User Stories, UAT, Process Mapping
-                </p>
-
-            </article>
-
-            <article class="skill-card">
-
-                <span class="skill-number">05</span>
-
-                <h3>Cloud, Data & AI</h3>
-
-                <p>
-                    GCP, Google BigQuery, Snowflake, Azure, Microsoft Fabric, Databricks,
-                    Cortex AI, Agentic AI
-                </p>
-            </article>
-
-            <article class="skill-card">
-
-                <span class="skill-number">06</span>
-
-                <h3>ApplicationDevelopment </h3>
-
-                <p>
-                    Streamlit, Flask, Dash, HTML/CSS, JavaScript
-                </p>
-
-            </article>
-
-            </article>
-
-            <article class="skill-card">
-
-                <span class="skill-number">07</span>
-
-                <h3>Developer Tools</h3>
-
-                <p>
-                    Git, GitHub
-                </p>
-
-            </article>
-
-            <article class="skill-card">
-
-                <span class="skill-number">08</span>
-
-                <h3>API Development</h3>
-
-                <p>
-                    REST APIs, Postman, Swagger/OpenAPI, JSON
-                </p>
-
-            </article>
-
-            <article class="skill-card">
-
-                <span class="skill-number">09</span>
-
-                <h3>Research & Collaboration</h3>
-
-                <p>
-                    Agile, Jira, Confluence, Technical Documentation
-                </p>
-
-            </article>
+          <article class="card skill-card">
+            <div class="card-icon lavender">HC</div>
+            <h3>Healthcare Analytics</h3>
+            <p>Medicare, Hospital Operations, Healthcare Reporting</p>
+          </article>
 
         </div>
+      </div>
+    </section>
 
-    </div>
-</section>
+    <!-- CERTIFICATIONS -->
+    <section id="certifications" class="full-section">
+      <div class="container">
 
-        <!-- Certifications -->
-        <section id="certifications" class="section">
+        <p class="section-label">Learning & Credentials</p>
+        <h2 class="section-title">Certifications</h2>
 
-    <div class="container">
+        <div class="cert-grid">
 
-        <div class="section-heading">
-
+          <article class="card cert-card">
+            <div class="cert-symbol">DC</div>
             <div>
-
-                <p class="section-label">
-                    Professional Certifications
-                </p>
-
-                <h2>
-                    Certifications and Credentials
-                </h2>
-
+              <h3>Associate Data Analyst</h3>
+              <p>DataCamp</p>
             </div>
+          </article>
+
+          <article class="card cert-card">
+            <div class="cert-symbol">SQL</div>
+            <div>
+              <h3>SQL Associate</h3>
+              <p>DataCamp</p>
+            </div>
+          </article>
+
+          <article class="card cert-card">
+            <div class="cert-symbol">DB</div>
+            <div>
+              <h3>Databricks Fundamentals</h3>
+              <p>Databricks</p>
+            </div>
+          </article>
+
+          <article class="card cert-card">
+            <div class="cert-symbol">IBM</div>
+            <div>
+              <h3>Business Analyst Professional Certificate</h3>
+              <p>IBM</p>
+            </div>
+          </article>
 
         </div>
+      </div>
+    </section>
 
-        <div class="certification-grid">
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section">
+      <div class="container">
 
-            <!-- Microsoft -->
+        <div class="contact-panel">
+          <p class="section-label">Let's Connect</p>
 
-            <article class="certification-card">
+          <h2>
+            Interested in collaborating or discussing opportunities?
+          </h2>
 
-                <div class="certificate-symbol">
-                    MS
-                </div>
+          <p>
+            I welcome conversations about data analytics,
+            business intelligence, healthcare technology,
+            and meaningful projects.
+          </p>
 
-                <div>
+          <div class="contact-actions">
+            <a
+              href="mailto:maghimire1@gmail.com"
+              class="button button-light"
+            >
+              Email Me
+            </a>
 
-                    <p class="certificate-status">
-                        Microsoft
-                    </p>
-
-                    <h3>
-                        Power BI Data Analyst Associate
-                    </h3>
-
-                    <p>
-                        PL-300
-                    </p>
-
-                    <a
-                        href="#"
-                        class="text-link"
-                    >
-                        View Credential →
-                    </a>
-
-                </div>
-
-            </article>
-
-            <!-- DataCamp Associate -->
-
-            <article class="certification-card">
-
-                <div class="certificate-symbol">
-                    DC
-                </div>
-
-                <div>
-
-                    <p class="certificate-status">
-                        DataCamp
-                    </p>
-
-                    <h3>
-                        Associate Data Analyst
-                    </h3>
-
-                    <p>
-                        Professional Certification
-                    </p>
-
-                    <a
-                        href="certifications/datacamp-data-analyst-associate.pdf"
-                        class="text-link"
-                    >
-                        View Credential →
-                    </a>
-
-                </div>
-
-            </article>
-
-            <!-- SQL Associate -->
-
-            <article class="certification-card">
-
-                <div class="certificate-symbol">
-                    SQL
-                </div>
-
-                <div>
-
-                    <p class="certificate-status">
-                        DataCamp
-                    </p>
-
-                    <h3>
-                        SQL Associate
-                    </h3>
-
-                    <p>
-                        Professional Certification
-                    </p>
-
-                    <a
-                        href="certifications/datacamp-sql-associate.pdf"
-                        class="text-link"
-                    >
-                        View Credential →
-                    </a>
-
-                </div>
-
-            </article>
-
-            <!-- Databricks -->
-
-            <article class="certification-card">
-
-                <div class="certificate-symbol">
-                    DB
-                </div>
-
-                <div>
-
-                    <p class="certificate-status">
-                        Databricks
-                    </p>
-
-                    <h3>
-                        Databricks Fundamentals
-                    </h3>
-
-                    <p>
-                        Databricks Academy
-                    </p>
-
-                    <a
-                        href="certifications/databricks-fundamentals.pdf"
-                        class="text-link"
-                    >
-                        View Credential →
-                    </a>
-
-                </div>
-
-            </article>
-
-            <!-- IBM -->
-
-            <article class="certification-card">
-
-                <div class="certificate-symbol">
-                    IBM
-                </div>
-
-                <div>
-
-                    <p class="certificate-status">
-                        IBM
-                    </p>
-
-                    <h3>
-                        Business Analyst Professional Certificate
-                    </h3>
-
-                    <p>
-                        Coursera
-                    </p>
-
-                    <a
-                        href="#"
-                        class="text-link"
-                    >
-                        View Credential →
-                    </a>
-
-                </div>
-
-            </article>
-
+            <a
+              href="https://github.com/mandiragh"
+              class="button button-outline-light"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View GitHub
+            </a>
+          </div>
         </div>
 
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        © <span id="current-year"></span> Mandira Ghimire.
+        All rights reserved.
+      </p>
     </div>
+  </footer>
 
-</section>
-
-        <!-- Contact -->
-        <section id="contact" class="section contact-section">
-
-            <div class="decorative-shape contact-shape"></div>
-
-            <div class="container contact-content">
-
-                <p class="section-label">Contact</p>
-
-                <h2>Let’s create something meaningful with data</h2>
-
-                <p>
-                    I am interested in opportunities involving data analytics,
-                    business analysis, healthcare analytics, reporting, and
-                    business intelligence.
-                </p>
-
-                <div class="contact-actions">
-
-                    <a
-                        href="mailto:maghimire1@gmail.com"
-                        class="button button-primary"
-                    >
-                        Email Me
-                    </a>
-
-            
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="site-footer">
-        <div class="container footer-content">
-
-            <p>
-                © <span id="current-year"></span> Mandira Ghimire
-            </p>
-
-            <div class="footer-links">
-                <a href="#home">Home</a>
-                <a href="#projects">Projects</a>
-                <a href="#certifications">Certifications</a>
-                <a href="#contact">Contact</a>
-            </div>
-
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <script>
+    document.getElementById("current-year").textContent =
+      new Date().getFullYear();
+  </script>
 
 </body>
 </html>

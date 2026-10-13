@@ -1,0 +1,248 @@
+
+:root {
+  --navy: #162a4d;
+  --navy-dark: #0d1b33;
+  --navy-soft: #27476f;
+  --blue: #5f8fc9;
+  --light-blue: #dbeafa;
+  --pale-blue: #eef6ff;
+  --lavender-blue: #eef0ff;
+  --maroon: #9c5264;
+  --soft-pink: #f3dce3;
+  --pale-pink: #fff2f6;
+  --background: #f9fbff;
+  --text: #17233a;
+  --muted: #66738a;
+  --border: #dce4f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background: var(--background);
+  color: var(--text);
+}
+
+.login-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.login-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 42px 60px;
+  background:
+    radial-gradient(circle at 85% 15%, rgba(243,220,227,0.17), transparent 35%),
+    linear-gradient(145deg, var(--navy-dark), var(--navy), var(--navy-soft));
+  color: white;
+}
+
+.back-link {
+  color: var(--light-blue);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.intro-content {
+  max-width: 520px;
+}
+
+.brand-mark {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  border-radius: 17px;
+  background: var(--soft-pink);
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 1.3rem;
+  margin-bottom: 35px;
+}
+
+.eyebrow {
+  color: var(--maroon);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.login-intro .eyebrow {
+  color: #f3bdcb;
+}
+
+.login-intro h1 {
+  font-size: clamp(2.5rem, 4vw, 4.3rem);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  margin: 15px 0 24px;
+}
+
+.intro-description {
+  color: var(--light-blue);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.feature-list {
+  display: grid;
+  gap: 17px;
+  margin-top: 40px;
+  color: white;
+  font-size: 0.95rem;
+}
+
+.intro-footer {
+  color: var(--light-blue);
+  font-size: 0.8rem;
+}
+
+.login-panel {
+  display: grid;
+  place-items: center;
+  padding: 35px;
+  background:
+    radial-gradient(circle at 90% 10%, var(--pale-pink), transparent 30%),
+    radial-gradient(circle at 10% 90%, var(--lavender-blue), transparent 35%),
+    var(--background);
+}
+
+.login-card {
+  width: min(100%, 440px);
+  padding: 45px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: 0 25px 70px rgba(22,42,77,0.1);
+}
+
+.lock-icon {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  background: var(--pale-pink);
+  border-radius: 15px;
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+}
+
+.login-card h2 {
+  color: var(--navy);
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.login-subtitle {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+form {
+  display: grid;
+  gap: 12px;
+}
+
+label {
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 0.86rem;
+}
+
+input {
+  width: 100%;
+  padding: 14px 15px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--pale-blue);
+}
+
+button {
+  border: none;
+  background: var(--navy);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--navy-soft);
+}
+
+.login-message {
+  color: var(--maroon);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.security-note {
+  background: var(--pale-blue);
+  border: 1px solid var(--light-blue);
+  border-radius: 12px;
+  padding: 17px;
+  margin-top: 28px;
+}
+
+.security-note strong {
+  color: var(--navy);
+  font-size: 0.86rem;
+}
+
+.security-note p {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.portfolio-link {
+  display: block;
+  text-align: center;
+  margin-top: 25px;
+  color: var(--maroon);
+  font-size: 0.85rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+@media (max-width: 850px) {
+  .login-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .login-intro {
+    padding: 35px;
+    min-height: 430px;
+  }
+
+  .intro-content {
+    margin: 40px 0;
+  }
+
+  .login-panel {
+    padding: 35px 18px;
+  }
+
+  .login-card {
+    padding: 30px;
+  }
+}
