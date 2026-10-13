@@ -1,0 +1,912 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Dashboard | Mandira Ghimire</title>
+
+  <style>
+    :root {
+      --navy: #162a4d;
+      --navy-dark: #0d1b33;
+      --navy-soft: #27476f;
+      --blue: #5f8fc9;
+      --light-blue: #dbeafa;
+      --pale-blue: #eef6ff;
+      --maroon: #9c5264;
+      --soft-pink: #f3dce3;
+      --pale-pink: #fff2f6;
+      --background: #f9fbff;
+      --text: #17233a;
+      --muted: #66738a;
+      --border: #dce4f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    #auth-status {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 30px;
+      text-align: center;
+      color: var(--navy);
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: 245px minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background: var(--navy-dark);
+      color: white;
+      padding: 28px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 10px;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--soft-pink);
+      color: var(--navy);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .brand small {
+      color: var(--light-blue);
+      font-size: 12px;
+    }
+
+    .sidebar nav {
+      display: grid;
+      gap: 7px;
+    }
+
+    .sidebar nav a {
+      color: var(--light-blue);
+      text-decoration: none;
+      padding: 13px 15px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .sidebar nav a:hover,
+    .sidebar nav a.active {
+      background: var(--navy-soft);
+      color: white;
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      display: grid;
+      gap: 12px;
+    }
+
+    .portfolio-link {
+      color: var(--light-blue);
+      text-decoration: none;
+      font-size: 13px;
+      padding: 10px;
+    }
+
+    .logout {
+      background: var(--maroon);
+      color: white;
+      border: 0;
+      border-radius: 10px;
+      padding: 13px;
+      font-weight: 700;
+    }
+
+    main {
+      min-width: 0;
+      padding: 30px 38px 60px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--maroon);
+      margin: 0 0 8px;
+    }
+
+    h1 {
+      color: var(--navy);
+      margin: 0;
+      font-size: 30px;
+    }
+
+    .account {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      padding: 12px 16px;
+      color: var(--navy-soft);
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .welcome {
+      background: linear-gradient(
+        120deg, var(--navy), var(--navy-soft)
+      );
+      color: white;
+      border-radius: 18px;
+      padding: 30px;
+      margin-bottom: 24px;
+    }
+
+    .welcome h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
+
+    .welcome p {
+      color: var(--light-blue);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .stat-card, .panel {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 22px;
+      box-shadow: 0 8px 25px rgba(22,42,77,.04);
+    }
+
+    .stat-card:nth-child(2) {
+      background: var(--pale-blue);
+    }
+
+    .stat-card:nth-child(3) {
+      background: var(--pale-pink);
+    }
+
+    .stat-card:nth-child(4) {
+      background: #eef0ff;
+    }
+
+    .stat-card p {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 0 0 10px;
+    }
+
+    .stat-card strong {
+      color: var(--navy);
+      font-size: 34px;
+    }
+
+    .stat-card small {
+      display: block;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr);
+      gap: 20px;
+    }
+
+    .panel {
+      margin-bottom: 20px;
+    }
+
+    .panel h2 {
+      color: var(--navy);
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .panel-description {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .primary-btn {
+      background: var(--navy);
+      color: white;
+      border: none;
+      border-radius: 9px;
+      padding: 12px 18px;
+      font-weight: 700;
+    }
+
+    .secondary-btn {
+      background: white;
+      color: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 12px 18px;
+    }
+
+    .contact-form {
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 15px;
+    }
+
+    .form-grid label {
+      display: grid;
+      gap: 7px;
+      color: var(--navy-soft);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .form-grid input,
+    .form-grid select,
+    .form-grid textarea,
+    .search-input {
+      width: 100%;
+      padding: 11px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: white;
+      color: var(--text);
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .search-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin: 24px 0 8px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 18px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    th, td {
+      padding: 13px 10px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--pale-blue);
+      color: var(--navy-soft);
+    }
+
+    td a {
+      color: var(--navy-soft);
+    }
+
+    .table-action {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 7px 9px;
+      margin: 2px;
+    }
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .pipeline-item {
+      background: var(--pale-blue);
+      padding: 15px 8px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .pipeline-item:nth-child(2) {
+      background: #eef0ff;
+    }
+
+    .pipeline-item:nth-child(3) {
+      background: var(--pale-pink);
+    }
+
+    .pipeline-item:nth-child(4) {
+      background: var(--light-blue);
+    }
+
+    .pipeline-item strong {
+      display: block;
+      font-size: 24px;
+      color: var(--navy);
+    }
+
+    .pipeline-item span {
+      font-size: 11px;
+      color: var(--navy-soft);
+    }
+
+    .empty-state {
+      border: 1px dashed var(--border);
+      background: var(--background);
+      border-radius: 10px;
+      padding: 22px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .feature {
+      padding: 13px;
+      background: var(--background);
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .feature strong {
+      display: block;
+      color: var(--navy);
+      font-size: 14px;
+    }
+
+    .feature small {
+      color: var(--muted);
+    }
+
+    #contact-message {
+      color: var(--navy-soft);
+      font-size: 13px;
+      min-height: 20px;
+    }
+
+    @media (max-width: 1100px) {
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 750px) {
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        gap: 16px;
+      }
+
+      .sidebar nav {
+        display: flex;
+        overflow-x: auto;
+      }
+
+      .sidebar nav a {
+        white-space: nowrap;
+      }
+
+      main {
+        padding: 20px 16px;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .stats, .form-grid, .pipeline {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <script type="module" src="dashboard.js"></script>
+</head>
+
+<body>
+  <div id="auth-status" role="status">
+    Checking your login session...
+  </div>
+
+  <div id="dashboard" class="dashboard" hidden>
+
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">MG</div>
+        <div>
+          <strong>Career Hub</strong>
+          <small>Personal Dashboard</small>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#overview" class="active">Overview</a>
+        <a href="#networking">My Network</a>
+        <a href="#applications">Applications</a>
+        <a href="#followups">Follow-ups</a>
+        <a href="#interviews">Interviews</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a class="portfolio-link" href="../index.html">
+          ← Back to Portfolio
+        </a>
+
+        <button id="logout-button" class="logout">
+          Sign Out
+        </button>
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">PRIVATE WORKSPACE</p>
+          <h1>Networking Dashboard</h1>
+        </div>
+
+        <div id="account-email" class="account">
+          Signed in
+        </div>
+      </header>
+
+      <section id="overview" class="welcome">
+        <h2>Welcome to your Career Hub</h2>
+        <p>
+          Manage your professional network, track
+          applications, and organize career follow-ups
+          from one place.
+        </p>
+      </section>
+
+      <section class="stats">
+        <div class="stat-card">
+          <p>My Connections</p>
+          <strong id="stat-contacts">0</strong>
+          <small>Saved contacts</small>
+        </div>
+
+        <div class="stat-card">
+          <p>Job Applications</p>
+          <strong id="stat-applications">0</strong>
+          <small>Coming next</small>
+        </div>
+
+        <div class="stat-card">
+          <p>Follow-ups Due</p>
+          <strong id="stat-followups">0</strong>
+          <small>Today or overdue</small>
+        </div>
+
+        <div class="stat-card">
+          <p>Interviews</p>
+          <strong id="stat-interviews">0</strong>
+          <small>Coming next</small>
+        </div>
+      </section>
+
+      <div class="content-grid">
+
+        <div>
+          <section id="networking" class="panel">
+            <h2>My Networking Contacts</h2>
+            <p class="panel-description">
+              Add professional connections and track
+              your conversations and follow-up dates.
+            </p>
+
+            <button id="toggle-contact-form"
+              class="primary-btn" type="button">
+              + Add New Contact
+            </button>
+
+            <form id="contact-form" class="contact-form" hidden>
+              <input type="hidden" id="contact-id">
+
+              <div class="form-grid">
+                <label>
+                  Full Name *
+                  <input id="contact-name" type="text"
+                    required maxlength="200">
+                </label>
+
+                <label>
+                  Company
+                  <input id="contact-company" type="text">
+                </label>
+
+                <label>
+                  Job Title
+                  <input id="contact-job-title" type="text">
+                </label>
+
+                <label>
+                  Email
+                  <input id="contact-email" type="email">
+                </label>
+
+                <label>
+                  LinkedIn URL
+                  <input id="contact-linkedin" type="url"
+                    placeholder="https://linkedin.com/in/...">
+                </label>
+
+                <label>
+                  Relationship Status
+                  <select id="contact-status">
+                    <option>To Contact</option>
+                    <option>Contacted</option>
+                    <option>Replied</option>
+                    <option>Connected</option>
+                  </select>
+                </label>
+
+                <label>
+                  Follow-up Date
+                  <input id="contact-followup" type="date">
+                </label>
+
+                <label class="full-width">
+                  Notes
+                  <textarea id="contact-notes" rows="3"
+                    placeholder="Conversation notes..."></textarea>
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <button id="save-contact"
+                  class="primary-btn" type="submit">
+                  Save Contact
+                </button>
+
+                <button id="cancel-contact"
+                  class="secondary-btn" type="button">
+                  Cancel
+                </button>
+              </div>
+            </form>
+
+            <p id="contact-message" role="status"></p>
+
+            <label class="search-label" for="contact-search">
+              Search Contacts
+            </label>
+
+            <input id="contact-search" class="search-input"
+              type="search"
+              placeholder="Search name, company, or role">
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Company / Role</th>
+                    <th>Status</th>
+                    <th>Follow-up</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody id="contacts-list">
+                  <tr>
+                    <td colspan="5">Loading contacts...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h2>Networking Pipeline</h2>
+            <p class="panel-description">
+              See where your professional relationships stand.
+            </p>
+
+            <div class="pipeline">
+              <div class="pipeline-item">
+                <strong id="pipeline-to-contact">0</strong>
+                <span>To Contact</span>
+              </div>
+
+              <div class="pipeline-item">
+                <strong id="pipeline-contacted">0</strong>
+                <span>Contacted</span>
+              </div>
+
+              <div class="pipeline-item">
+                <strong id="pipeline-replied">0</strong>
+                <span>Replied</span>
+              </div>
+
+              <div class="pipeline-item">
+                <strong id="pipeline-connected">0</strong>
+                <span>Connected</span>
+              </div>
+            </div>
+          </section>
+
+          
+<section id="applications" class="panel">
+  <h2>Job Application Tracker</h2>
+  <p class="panel-description">
+    Save jobs you're interested in and track your progress.
+  </p>
+
+  <button id="new-application" class="primary-btn" type="button">
+    + Add Job Application
+  </button>
+
+  <form id="application-form" class="contact-form" hidden>
+    <input id="application-id" type="hidden">
+
+    <div class="form-grid">
+      <label>Company *
+        <input id="application-company" required>
+      </label>
+      <label>Position *
+        <input id="application-position" required>
+      </label>
+      <label>Location
+        <input id="application-location" placeholder="Boston, MA / Remote">
+      </label>
+      <label>Job URL
+        <input id="application-url" type="url" placeholder="https://...">
+      </label>
+      <label>Salary
+        <input id="application-salary" placeholder="$75,000–$90,000">
+      </label>
+      <label>Status
+        <select id="application-status">
+          <option>Interested</option>
+          <option>Applied</option>
+          <option>Screening</option>
+          <option>Interviewing</option>
+          <option>Offer</option>
+          <option>Rejected</option>
+          <option>Withdrawn</option>
+        </select>
+      </label>
+      <label>Application Date
+        <input id="application-date" type="date">
+      </label>
+      <label class="full-width">Notes
+        <textarea id="application-notes" rows="3"></textarea>
+      </label>
+    </div>
+
+    <div class="form-actions">
+      <button class="primary-btn" type="submit">Save Application</button>
+      <button id="cancel-application" class="secondary-btn"
+        type="button">Cancel</button>
+    </div>
+  </form>
+
+  <p id="application-message" role="status"></p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Company / Position</th>
+          <th>Status</th>
+          <th>Applied</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="applications-list"></tbody>
+    </table>
+  </div>
+</section>
+
+        
+
+        
+        <div>
+          <section id="followups" class="panel">
+            <h2>Upcoming Follow-ups</h2>
+            <div id="followups-list" class="empty-state">
+              No follow-ups scheduled.
+            </div>
+          </section>
+
+         
+<section id="interviews" class="panel">
+  <h2>Interview Tracker</h2>
+  <p class="panel-description">
+    Schedule interview rounds and record your preparation.
+  </p>
+
+  <button id="new-interview" class="primary-btn" type="button">
+    + Add Interview
+  </button>
+
+  <form id="interview-form" class="contact-form" hidden>
+    <input id="interview-id" type="hidden">
+
+    <div class="form-grid">
+      <label class="full-width">Job Application *
+        <select id="interview-application" required></select>
+      </label>
+
+      <label>Interview Round *
+        <select id="interview-round">
+          <option>HR Screening</option>
+          <option>Technical Assessment</option>
+          <option>Technical Interview</option>
+          <option>Hiring Manager</option>
+          <option>Panel Interview</option>
+          <option>Final Interview</option>
+          <option>Other</option>
+        </select>
+      </label>
+
+      <label>Date and Time *
+        <input id="interview-date" type="datetime-local" required>
+      </label>
+
+      <label>Format
+        <select id="interview-format">
+          <option>Virtual</option>
+          <option>In Person</option>
+          <option>Phone</option>
+        </select>
+      </label>
+
+      <label>Interviewer
+        <input id="interview-interviewer">
+      </label>
+
+      <label>Outcome
+        <select id="interview-outcome">
+          <option>Scheduled</option>
+          <option>Completed</option>
+          <option>Passed</option>
+          <option>Rejected</option>
+          <option>Cancelled</option>
+        </select>
+      </label>
+
+      <label class="full-width">Preparation Notes
+        <textarea id="interview-notes" rows="4"></textarea>
+      </label>
+    </div>
+
+    <div class="form-actions">
+      <button class="primary-btn" type="submit">Save Interview</button>
+      <button id="cancel-interview" class="secondary-btn"
+        type="button">Cancel</button>
+    </div>
+  </form>
+
+  <p id="interview-message" role="status"></p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Company / Round</th>
+          <th>Date</th>
+          <th>Outcome</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="interviews-list"></tbody>
+    </table>
+  </div>
+</section>
+
+
+          <section class="panel">
+            <h2>Career Tools</h2>
+
+            <div class="feature">
+              <strong>Contact Manager</strong>
+              <small>Add, edit, search, and delete contacts</small>
+            </div>
+
+            <div class="feature">
+              <strong>Networking Pipeline</strong>
+              <small>Track relationship progress</small>
+            </div>
+
+            <div class="feature">
+              <strong>Follow-up Planner</strong>
+              <small>Keep track of outreach dates</small>
+            </div>
+
+            <div class="feature">
+              <strong>Application Tracker</strong>
+              <small>Coming next</small>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
