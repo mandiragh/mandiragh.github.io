@@ -325,6 +325,7 @@
       display: flex;
       gap: 10px;
       margin-top: 18px;
+      flex-wrap: wrap;
     }
 
     .search-label {
@@ -439,6 +440,71 @@
       min-height: 20px;
     }
 
+    /* LINKEDIN QR SCANNER */
+
+    .networking-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .qr-scan-btn {
+      border: 1px solid var(--blue);
+      background: var(--pale-blue);
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .qr-scanner-panel {
+      background: var(--pale-blue);
+      border: 1px solid var(--light-blue);
+      border-radius: 14px;
+      padding: 22px;
+      margin: 20px 0;
+    }
+
+    .qr-scanner-panel h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 18px;
+    }
+
+    #qr-reader {
+      width: 100%;
+      max-width: 420px;
+      margin: 18px auto;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    #qr-reader video {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    #qr-message {
+      color: var(--navy-soft);
+      font-size: 13px;
+      line-height: 1.5;
+      min-height: 20px;
+    }
+
+    .qr-help {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .qr-scanner-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
     @media (max-width: 1100px) {
       .stats {
         grid-template-columns: repeat(2, 1fr);
@@ -481,9 +547,24 @@
       .stats, .form-grid, .pipeline {
         grid-template-columns: 1fr;
       }
+
+      .networking-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .qr-scanner-panel {
+        padding: 15px;
+      }
     }
   </style>
 
+  <!-- QR CODE SCANNER LIBRARY -->
+  <script
+    src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js">
+  </script>
+
+  <!-- EXISTING DASHBOARD FUNCTIONALITY -->
   <script type="module" src="dashboard.js"></script>
 </head>
 
@@ -494,6 +575,7 @@
 
   <div id="dashboard" class="dashboard" hidden>
 
+    <!-- SIDEBAR -->
     <aside class="sidebar">
       <div class="brand">
         <div class="brand-logo">MG</div>
@@ -523,6 +605,7 @@
     </aside>
 
     <main>
+      <!-- TOPBAR -->
       <header class="topbar">
         <div>
           <p class="eyebrow">PRIVATE WORKSPACE</p>
@@ -534,6 +617,7 @@
         </div>
       </header>
 
+      <!-- OVERVIEW -->
       <section id="overview" class="welcome">
         <h2>Welcome to your Career Hub</h2>
         <p>
@@ -543,6 +627,7 @@
         </p>
       </section>
 
+      <!-- DASHBOARD STATISTICS -->
       <section class="stats">
         <div class="stat-card">
           <p>My Connections</p>
@@ -570,48 +655,114 @@
       </section>
 
       <div class="content-grid">
-
         <div>
+
+          <!-- NETWORKING CONTACTS -->
           <section id="networking" class="panel">
             <h2>My Networking Contacts</h2>
+
             <p class="panel-description">
               Add professional connections and track
               your conversations and follow-up dates.
+              You can also scan LinkedIn QR codes
+              to capture profile links.
             </p>
 
-            <button id="toggle-contact-form"
-              class="primary-btn" type="button">
-              + Add New Contact
-            </button>
+            <!-- CONTACT ACTION BUTTONS -->
+            <div class="networking-actions">
+              <button
+                id="toggle-contact-form"
+                class="primary-btn"
+                type="button">
+                + Add New Contact
+              </button>
 
-            <form id="contact-form" class="contact-form" hidden>
+              <button
+                id="scan-linkedin-qr"
+                class="secondary-btn qr-scan-btn"
+                type="button">
+                Scan LinkedIn QR
+              </button>
+            </div>
+
+            <!-- QR SCANNER PANEL -->
+            <div
+              id="qr-scanner-panel"
+              class="qr-scanner-panel"
+              hidden>
+
+              <h3>Scan LinkedIn QR Code</h3>
+
+              <p class="panel-description">
+                Point your phone or laptop camera at
+                someone's LinkedIn QR code.
+              </p>
+
+              <div id="qr-reader"></div>
+
+              <p id="qr-message" role="status"></p>
+
+              <p class="qr-help">
+                After scanning, the LinkedIn profile URL
+                will be added to your contact form.
+                You can then review the person's details
+                and save the contact.
+              </p>
+
+              <div class="qr-scanner-actions">
+                <button
+                  id="close-qr-scanner"
+                  class="secondary-btn"
+                  type="button">
+                  Close Scanner
+                </button>
+              </div>
+            </div>
+
+            <!-- CONTACT FORM -->
+            <form
+              id="contact-form"
+              class="contact-form"
+              hidden>
+
               <input type="hidden" id="contact-id">
 
               <div class="form-grid">
                 <label>
                   Full Name *
-                  <input id="contact-name" type="text"
-                    required maxlength="200">
+                  <input
+                    id="contact-name"
+                    type="text"
+                    required
+                    maxlength="200">
                 </label>
 
                 <label>
                   Company
-                  <input id="contact-company" type="text">
+                  <input
+                    id="contact-company"
+                    type="text">
                 </label>
 
                 <label>
                   Job Title
-                  <input id="contact-job-title" type="text">
+                  <input
+                    id="contact-job-title"
+                    type="text">
                 </label>
 
                 <label>
                   Email
-                  <input id="contact-email" type="email">
+                  <input
+                    id="contact-email"
+                    type="email">
                 </label>
 
                 <label>
                   LinkedIn URL
-                  <input id="contact-linkedin" type="url"
+                  <input
+                    id="contact-linkedin"
+                    type="url"
                     placeholder="https://linkedin.com/in/...">
                 </label>
 
@@ -627,24 +778,32 @@
 
                 <label>
                   Follow-up Date
-                  <input id="contact-followup" type="date">
+                  <input
+                    id="contact-followup"
+                    type="date">
                 </label>
 
                 <label class="full-width">
                   Notes
-                  <textarea id="contact-notes" rows="3"
+                  <textarea
+                    id="contact-notes"
+                    rows="3"
                     placeholder="Conversation notes..."></textarea>
                 </label>
               </div>
 
               <div class="form-actions">
-                <button id="save-contact"
-                  class="primary-btn" type="submit">
+                <button
+                  id="save-contact"
+                  class="primary-btn"
+                  type="submit">
                   Save Contact
                 </button>
 
-                <button id="cancel-contact"
-                  class="secondary-btn" type="button">
+                <button
+                  id="cancel-contact"
+                  class="secondary-btn"
+                  type="button">
                   Cancel
                 </button>
               </div>
@@ -652,14 +811,20 @@
 
             <p id="contact-message" role="status"></p>
 
-            <label class="search-label" for="contact-search">
+            <!-- SEARCH CONTACTS -->
+            <label
+              class="search-label"
+              for="contact-search">
               Search Contacts
             </label>
 
-            <input id="contact-search" class="search-input"
+            <input
+              id="contact-search"
+              class="search-input"
               type="search"
               placeholder="Search name, company, or role">
 
+            <!-- CONTACTS TABLE -->
             <div class="table-wrap">
               <table>
                 <thead>
@@ -674,15 +839,19 @@
 
                 <tbody id="contacts-list">
                   <tr>
-                    <td colspan="5">Loading contacts...</td>
+                    <td colspan="5">
+                      Loading contacts...
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </section>
 
+          <!-- NETWORKING PIPELINE -->
           <section class="panel">
             <h2>Networking Pipeline</h2>
+
             <p class="panel-description">
               See where your professional relationships stand.
             </p>
@@ -710,200 +879,308 @@
             </div>
           </section>
 
-          
-<section id="applications" class="panel">
-  <h2>Job Application Tracker</h2>
-  <p class="panel-description">
-    Save jobs you're interested in and track your progress.
-  </p>
+          <!-- JOB APPLICATION TRACKER -->
+          <section id="applications" class="panel">
+            <h2>Job Application Tracker</h2>
 
-  <button id="new-application" class="primary-btn" type="button">
-    + Add Job Application
-  </button>
+            <p class="panel-description">
+              Save jobs you're interested in and track
+              your progress.
+            </p>
 
-  <form id="application-form" class="contact-form" hidden>
-    <input id="application-id" type="hidden">
+            <button
+              id="new-application"
+              class="primary-btn"
+              type="button">
+              + Add Job Application
+            </button>
 
-    <div class="form-grid">
-      <label>Company *
-        <input id="application-company" required>
-      </label>
-      <label>Position *
-        <input id="application-position" required>
-      </label>
-      <label>Location
-        <input id="application-location" placeholder="Boston, MA / Remote">
-      </label>
-      <label>Job URL
-        <input id="application-url" type="url" placeholder="https://...">
-      </label>
-      <label>Salary
-        <input id="application-salary" placeholder="$75,000–$90,000">
-      </label>
-      <label>Status
-        <select id="application-status">
-          <option>Interested</option>
-          <option>Applied</option>
-          <option>Screening</option>
-          <option>Interviewing</option>
-          <option>Offer</option>
-          <option>Rejected</option>
-          <option>Withdrawn</option>
-        </select>
-      </label>
-      <label>Application Date
-        <input id="application-date" type="date">
-      </label>
-      <label class="full-width">Notes
-        <textarea id="application-notes" rows="3"></textarea>
-      </label>
-    </div>
+            <form
+              id="application-form"
+              class="contact-form"
+              hidden>
 
-    <div class="form-actions">
-      <button class="primary-btn" type="submit">Save Application</button>
-      <button id="cancel-application" class="secondary-btn"
-        type="button">Cancel</button>
-    </div>
-  </form>
+              <input
+                id="application-id"
+                type="hidden">
 
-  <p id="application-message" role="status"></p>
+              <div class="form-grid">
+                <label>
+                  Company *
+                  <input
+                    id="application-company"
+                    required>
+                </label>
 
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Company / Position</th>
-          <th>Status</th>
-          <th>Applied</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody id="applications-list"></tbody>
-    </table>
-  </div>
-</section>
+                <label>
+                  Position *
+                  <input
+                    id="application-position"
+                    required>
+                </label>
 
-        
+                <label>
+                  Location
+                  <input
+                    id="application-location"
+                    placeholder="Boston, MA / Remote">
+                </label>
 
-        
+                <label>
+                  Job URL
+                  <input
+                    id="application-url"
+                    type="url"
+                    placeholder="https://...">
+                </label>
+
+                <label>
+                  Salary
+                  <input
+                    id="application-salary"
+                    placeholder="$75,000–$90,000">
+                </label>
+
+                <label>
+                  Status
+                  <select id="application-status">
+                    <option>Interested</option>
+                    <option>Applied</option>
+                    <option>Screening</option>
+                    <option>Interviewing</option>
+                    <option>Offer</option>
+                    <option>Rejected</option>
+                    <option>Withdrawn</option>
+                  </select>
+                </label>
+
+                <label>
+                  Application Date
+                  <input
+                    id="application-date"
+                    type="date">
+                </label>
+
+                <label class="full-width">
+                  Notes
+                  <textarea
+                    id="application-notes"
+                    rows="3"></textarea>
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <button
+                  class="primary-btn"
+                  type="submit">
+                  Save Application
+                </button>
+
+                <button
+                  id="cancel-application"
+                  class="secondary-btn"
+                  type="button">
+                  Cancel
+                </button>
+              </div>
+            </form>
+
+            <p id="application-message" role="status"></p>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Company / Position</th>
+                    <th>Status</th>
+                    <th>Applied</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody id="applications-list"></tbody>
+              </table>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
         <div>
+
+          <!-- FOLLOW-UPS -->
           <section id="followups" class="panel">
             <h2>Upcoming Follow-ups</h2>
-            <div id="followups-list" class="empty-state">
+
+            <div
+              id="followups-list"
+              class="empty-state">
               No follow-ups scheduled.
             </div>
           </section>
 
-         
-<section id="interviews" class="panel">
-  <h2>Interview Tracker</h2>
-  <p class="panel-description">
-    Schedule interview rounds and record your preparation.
-  </p>
+          <!-- INTERVIEW TRACKER -->
+          <section id="interviews" class="panel">
+            <h2>Interview Tracker</h2>
 
-  <button id="new-interview" class="primary-btn" type="button">
-    + Add Interview
-  </button>
+            <p class="panel-description">
+              Schedule interview rounds and record
+              your preparation.
+            </p>
 
-  <form id="interview-form" class="contact-form" hidden>
-    <input id="interview-id" type="hidden">
+            <button
+              id="new-interview"
+              class="primary-btn"
+              type="button">
+              + Add Interview
+            </button>
 
-    <div class="form-grid">
-      <label class="full-width">Job Application *
-        <select id="interview-application" required></select>
-      </label>
+            <form
+              id="interview-form"
+              class="contact-form"
+              hidden>
 
-      <label>Interview Round *
-        <select id="interview-round">
-          <option>HR Screening</option>
-          <option>Technical Assessment</option>
-          <option>Technical Interview</option>
-          <option>Hiring Manager</option>
-          <option>Panel Interview</option>
-          <option>Final Interview</option>
-          <option>Other</option>
-        </select>
-      </label>
+              <input
+                id="interview-id"
+                type="hidden">
 
-      <label>Date and Time *
-        <input id="interview-date" type="datetime-local" required>
-      </label>
+              <div class="form-grid">
+                <label class="full-width">
+                  Job Application *
+                  <select
+                    id="interview-application"
+                    required></select>
+                </label>
 
-      <label>Format
-        <select id="interview-format">
-          <option>Virtual</option>
-          <option>In Person</option>
-          <option>Phone</option>
-        </select>
-      </label>
+                <label>
+                  Interview Round *
+                  <select id="interview-round">
+                    <option>HR Screening</option>
+                    <option>Technical Assessment</option>
+                    <option>Technical Interview</option>
+                    <option>Hiring Manager</option>
+                    <option>Panel Interview</option>
+                    <option>Final Interview</option>
+                    <option>Other</option>
+                  </select>
+                </label>
 
-      <label>Interviewer
-        <input id="interview-interviewer">
-      </label>
+                <label>
+                  Date and Time *
+                  <input
+                    id="interview-date"
+                    type="datetime-local"
+                    required>
+                </label>
 
-      <label>Outcome
-        <select id="interview-outcome">
-          <option>Scheduled</option>
-          <option>Completed</option>
-          <option>Passed</option>
-          <option>Rejected</option>
-          <option>Cancelled</option>
-        </select>
-      </label>
+                <label>
+                  Format
+                  <select id="interview-format">
+                    <option>Virtual</option>
+                    <option>In Person</option>
+                    <option>Phone</option>
+                  </select>
+                </label>
 
-      <label class="full-width">Preparation Notes
-        <textarea id="interview-notes" rows="4"></textarea>
-      </label>
-    </div>
+                <label>
+                  Interviewer
+                  <input id="interview-interviewer">
+                </label>
 
-    <div class="form-actions">
-      <button class="primary-btn" type="submit">Save Interview</button>
-      <button id="cancel-interview" class="secondary-btn"
-        type="button">Cancel</button>
-    </div>
-  </form>
+                <label>
+                  Outcome
+                  <select id="interview-outcome">
+                    <option>Scheduled</option>
+                    <option>Completed</option>
+                    <option>Passed</option>
+                    <option>Rejected</option>
+                    <option>Cancelled</option>
+                  </select>
+                </label>
 
-  <p id="interview-message" role="status"></p>
+                <label class="full-width">
+                  Preparation Notes
+                  <textarea
+                    id="interview-notes"
+                    rows="4"></textarea>
+                </label>
+              </div>
 
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Company / Round</th>
-          <th>Date</th>
-          <th>Outcome</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody id="interviews-list"></tbody>
-    </table>
-  </div>
-</section>
+              <div class="form-actions">
+                <button
+                  class="primary-btn"
+                  type="submit">
+                  Save Interview
+                </button>
 
+                <button
+                  id="cancel-interview"
+                  class="secondary-btn"
+                  type="button">
+                  Cancel
+                </button>
+              </div>
+            </form>
 
+            <p id="interview-message" role="status"></p>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Company / Round</th>
+                    <th>Date</th>
+                    <th>Outcome</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+
+                <tbody id="interviews-list"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- CAREER TOOLS -->
           <section class="panel">
             <h2>Career Tools</h2>
 
             <div class="feature">
               <strong>Contact Manager</strong>
-              <small>Add, edit, search, and delete contacts</small>
+              <small>
+                Add, edit, search, and delete contacts
+              </small>
             </div>
 
             <div class="feature">
               <strong>Networking Pipeline</strong>
-              <small>Track relationship progress</small>
+              <small>
+                Track relationship progress
+              </small>
             </div>
 
             <div class="feature">
               <strong>Follow-up Planner</strong>
-              <small>Keep track of outreach dates</small>
+              <small>
+                Keep track of outreach dates
+              </small>
             </div>
 
             <div class="feature">
               <strong>Application Tracker</strong>
-              <small>Coming next</small>
+              <small>
+                Track job opportunities and applications
+              </small>
+            </div>
+
+            <div class="feature">
+              <strong>LinkedIn QR Scanner</strong>
+              <small>
+                Capture LinkedIn profile links
+                and add them to your network
+              </small>
             </div>
           </section>
+
         </div>
       </div>
     </main>

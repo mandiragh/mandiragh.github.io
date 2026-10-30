@@ -947,3 +947,259 @@ function renderInterviews() {
     tbody.appendChild(row);
   }
 }
+
+
+/* =====================================================
+   14. LINKEDIN QR CODE SCANNER
+   ===================================================== */
+
+const scanLinkedInButton = $("scan-linkedin-qr");
+const closeQRButton = $("close-qr-scanner");
+const qrScannerPanel = $("qr-scanner-panel");
+const qrMessage = $("qr-message");
+
+let qrScanner = null;
+let qrScannerRunning = false;
+let qrScannerStarting = false;
+
+function showQRMessage(message) {
+  qrMessage.textContent = message;
+}
+
+// Validate and normalize LinkedIn profile URLs.
+function parseLinkedInURL(value) {
+  try {
+    const url = new URL(value.trim());
+
+    const hostname = url.hostname.toLowerCase();
+
+    const validHost =
+      hostname === "linkedin.com" ||
+      hostname === "www.linkedin.com" ||
+      hostname === "m.linkedin.com";
+
+    if (!validHost || url.protocol !== "https:") {
+      return null;
+    }
+
+    // Only accept personal LinkedIn profiles.
+    const parts = url.pathname.split("/").filter(Boolean);
+
+    if (
+      parts.length !== 2 ||
+      parts[0].toLowerCase() !== "in"
+    ) {
+      return null;
+    }
+
+    const profileId = parts[1];
+
+    if (!profileId) {
+      return null;
+    }
+
+    // Remove tracking parameters.
+    return (
+      "https://www.linkedin.com/in/" +
+      encodeURIComponent(decodeURIComponent(profileId)) +
+      "/"
+    );
+
+  } catch {
+    return null;
+  }
+}
+
+// Stop the camera safely.
+async function stopQRScanner() {
+  if (qrScannerStarting) {
+    // Wait for camera initialization to finish.
+    while (qrScannerStarting) {
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+  }
+
+  if (qrScanner) {
+    try {
+      if (qrScannerRunning) {
+        await qrScanner.stop();
+      }
+
+      qrScanner.clear();
+    } catch (error) {
+      console.warn("QR scanner cleanup:", error);
+    }
+  }
+
+  qrScanner = null;
+  qrScannerRunning = false;
+}
+
+// Open camera and start scanning.
+async function startQRScanner() {
+  if (!currentUser) {
+    showMessage("Please sign in first.");
+    return;
+  }
+
+  if (
+    typeof Html5Qrcode === "undefined"
+  ) {
+    showMessage(
+      "QR scanner library could not load. Check your internet connection."
+    );
+    return;
+  }
+
+  scanLinkedInButton.disabled = true;
+  qrScannerPanel.hidden = false;
+
+  showQRMessage("Starting camera...");
+
+  try {
+    qrScannerStarting = true;
+
+    qrScanner = new Html5Qrcode("qr-reader");
+
+    await qrScanner.start(
+      { facingMode: "environment" },
+      {
+        fps: 10,
+        qrbox: {
+          width: 220,
+          height: 220
+        }
+      },
+      async (decodedText) => {
+        if (!qrScannerRunning) return;
+
+        // Prevent repeated scans while processing.
+        qrScannerRunning = false;
+
+        await handleLinkedInQR(decodedText);
+      },
+      () => {
+        // Ignore frames without a QR code.
+      }
+    );
+
+    qrScannerRunning = true;
+    showQRMessage(
+      "Camera ready. Point it at a LinkedIn QR code."
+    );
+
+  } catch (error) {
+    showQRMessage(
+      "Unable to start camera. Check camera permissions and try again."
+    );
+
+    console.error("QR camera error:", error);
+
+    await stopQRScanner();
+
+  } finally {
+    qrScannerStarting = false;
+    scanLinkedInButton.disabled = false;
+  }
+}
+
+// Process scanned LinkedIn profile.
+async function handleLinkedInQR(decodedText) {
+  const linkedinURL = parseLinkedInURL(decodedText);
+
+  if (!linkedinURL) {
+    showQRMessage(
+      "This QR code does not contain a valid LinkedIn personal profile URL."
+    );
+
+    // Stop the current scan; user can start again.
+    await stopQRScanner();
+    return;
+  }
+
+  showQRMessage("LinkedIn profile detected.");
+
+  await stopQRScanner();
+
+  qrScannerPanel.hidden = true;
+
+  // Check for an existing contact.
+  const existingContact = contacts.find(contact => {
+    const savedURL = parseLinkedInURL(
+      contact.linkedin_url || ""
+    );
+
+    return savedURL &&
+      savedURL.toLowerCase() === linkedinURL.toLowerCase();
+  });
+
+  if (existingContact) {
+    // Reuse existing edit functionality.
+    editContact(existingContact.id);
+
+    showMessage(
+      "This LinkedIn profile is already saved. " +
+      "Opened the existing contact for review."
+    );
+
+    return;
+  }
+
+  // Open a new contact form.
+  resetContactForm();
+
+  contactForm.hidden = false;
+
+  // Populate LinkedIn URL.
+  $("contact-linkedin").value = linkedinURL;
+
+  // Set default networking status.
+  $("contact-status").value = "To Contact";
+
+  showMessage(
+    "LinkedIn QR scanned successfully! " +
+    "Add the person's name and review their details, " +
+    "then click Save Contact."
+  );
+
+  contactForm.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+  $("contact-name").focus();
+}
+
+// Scan button.
+scanLinkedInButton.addEventListener(
+  "click",
+  async () => {
+    if (qrScannerRunning || qrScannerStarting) {
+      return;
+    }
+
+    await startQRScanner();
+  }
+);
+
+// Close scanner button.
+closeQRButton.addEventListener(
+  "click",
+  async () => {
+    closeQRButton.disabled = true;
+
+    await stopQRScanner();
+
+    qrScannerPanel.hidden = true;
+    showQRMessage("");
+
+    closeQRButton.disabled = false;
+  }
+);
+
+// Release camera when leaving the page.
+window.addEventListener("pagehide", () => {
+  if (qrScanner && qrScannerRunning) {
+    qrScanner.stop().catch(console.warn);
+  }
+});
